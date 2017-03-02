@@ -1,16 +1,16 @@
 package com.empleodigital.bquiet.beans;
 
-public class Usuario {
+public class Aula {
 	private int id;
 	private String nombre;
-	private int tipoUsuario;
+	private int id_centro;
 	
-	public Usuario(){}
+	public Aula(){}
 	
-	public Usuario(int id, String nombre, int tipoUsuario) {
+	public Aula(int id, String nombre, int id_centro) {
 		this.id = id;
 		this.nombre = nombre;
-		this.tipoUsuario = tipoUsuario;
+		this.id_centro = id_centro;
 	}
 
 	public int getId() {
@@ -29,18 +29,17 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public int getTipoUsuario() {
-		return tipoUsuario;
+	public int getId_centro() {
+		return id_centro;
 	}
 
-	public void setTipoUsuario(int tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setId_centro(int id_centro) {
+		this.id_centro = id_centro;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", tipoUsuario=" + tipoUsuario + "]";
+		return "Aula [id=" + id + ", nombre=" + nombre + ", id_centro=" + id_centro + "]";
 	}
-	
 	
 }
