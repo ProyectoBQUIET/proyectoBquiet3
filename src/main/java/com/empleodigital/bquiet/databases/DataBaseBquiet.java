@@ -6,6 +6,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.Usuario;
 
 public class DataBaseBquiet extends DataBaseGenerica {
@@ -37,6 +38,16 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			System.out.println("El usuario no existe!");
 		}
 		return user;
+	}
+	public static ArrayList<Centro> listaColegios(){
+
+		String sql = "SELECT * FROM centros";
+		ArrayList<Centro> listaCentros= (ArrayList<Centro>) jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Centro>(Centro.class)
+				);
+
+		return listaCentros;
 	}
 	
 }
