@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.empleodigital.bquiet.beans.Centro;
+import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 
 public class DataBaseBquiet extends DataBaseGenerica {
@@ -66,6 +67,31 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		}
 		
 		return usuarios;
+	}
+	
+	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass) {
+		
+		try {
+			jdbc.update("INSERT INTO centros (nombre) VALUES (?)", new Object[]{nombreCentro});
+			
+			Centro centro = jdbc.queryForObject("SELECT * FROM centros WHERE nombre=?",
+					new BeanPropertyRowMapper<Centro>(Centro.class),
+					new Object[]{nombreCentro});
+			
+			jdbc.update("INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (?, ?, ?)",
+					new Object[]{TipoUsuario.SUPERUSUARIO, superusuario, pass});
+			
+			Usuario user = jdbc.queryForObject("SELECT * FROM usuarios WHERE nombre=?",
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{superusuario});
+			
+			jdbc.update("INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (?, ?)",
+					new Object[]{user.getId(), centro.getId()});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return true;
 	}
 	
 	

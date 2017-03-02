@@ -12,18 +12,22 @@
 
 <h2>Listado de centros </h2>
 
-
-<a href="registroCentro" class="btn btn-warning">Añadir centro</a>
-
 <h3>${usuarioLogueado}</h3>
 
 <ul>
-
 	<li>Centros</li>
 	<c:forEach items="${centros}" var="centro">
 	<li>${centro}</li>
 	</c:forEach>
 </ul>
 
+<br>
+
+<form>
+	<input type="text" name="nuevoCentro" placeholder="Introduce el nombre del Centro" required="required"/>
+	<input type="text" name="nuevoSuperUsuario" placeholder="Introduce el nombre del SuperUsuario del centro" required="required" />
+	<input type="password" name="passSuperUsuario" placeholder="Introduce la contraseña del nuevo SuperUsuario" required="required"/>
+	<button formaction="nuevocentro" formmethod="post">Registrar Centro</button>
+</form>
 </body>
 </html>
