@@ -78,9 +78,9 @@ INSERT INTO tipousuario (nombre) VALUES ('administrador');
 INSERT INTO tipousuario (nombre) VALUES ('superusuario');
 INSERT INTO tipousuario (nombre) VALUES ('usuario');
 
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (1, 'El primer administrador');
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (2, 'El primer superusuario');
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (3, 'El primer usuario');
+INSERT INTO usuarios (id_tipousuario, nombre) VALUES (1, 'El primer administrador', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre) VALUES (2, 'El primer superusuario', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre) VALUES (3, 'El primer usuario', 'admin');
 
 INSERT INTO centros (nombre) VALUES ('La Termica');
 
