@@ -17,6 +17,7 @@ CREATE TABLE usuarios (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_tipousuario INT(1) NOT NULL,
 	nombre VARCHAR(50) UNIQUE NOT NULL,
+	pass VARCHAR(20) NOT NULL
 	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id)
 
 ) ENGINE=INNODB;
