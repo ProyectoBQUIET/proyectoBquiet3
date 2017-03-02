@@ -39,13 +39,16 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return user;
 	}
 	
-	public static ArrayList<Centro> listaColegios(){
+	public static ArrayList<Centro> listaCentros(){
 
-		String sql = "SELECT * FROM centros";
-		ArrayList<Centro> listaCentros= (ArrayList<Centro>) jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Centro>(Centro.class)
-				);
+		ArrayList<Centro> listaCentros = new ArrayList<Centro>();
+		
+		try {
+			listaCentros = (ArrayList<Centro>) jdbc.query(
+					"SELECT * FROM centros", 
+					new BeanPropertyRowMapper<Centro>(Centro.class)
+					);
+		} catch (Exception e) {}
 
 		return listaCentros;
 	}

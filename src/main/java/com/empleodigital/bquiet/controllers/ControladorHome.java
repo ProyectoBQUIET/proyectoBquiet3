@@ -35,7 +35,7 @@ public class ControladorHome {
 			System.out.println(usuario.getId_tipousuario());
 			if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
 				mav.setViewName("homeAdministrador");
-				
+				mav.addObject("centros", DataBaseBquiet.listaCentros());
 			}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
 				DataBaseBquiet.listaUsuarios(usuario);
 				mav.setViewName("infoCentro");
