@@ -8,7 +8,12 @@ public class Curso {
 	
 	public Curso() {}
 	
-	//Aqui iria el cosntructor que recibe parametros
+	public Curso(int id, String nombre, int id_centro) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.id_centro = id_centro;
+	}
 
 	public int getId() {
 		return id;
