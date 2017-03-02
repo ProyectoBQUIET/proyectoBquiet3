@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,14 @@
 <a href="registroCentro" class="btn btn-warning">Añadir centro</a>
 
 <h3>${usuarioLogueado}</h3>
+
+<ul>
+
+	<li>Centros</li>
+	<c:forEach items="${centros}" var="centro">
+	<li>${centro}</li>
+	</c:forEach>
+</ul>
 
 </body>
 </html>
