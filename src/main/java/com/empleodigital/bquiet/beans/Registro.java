@@ -16,7 +16,23 @@ public class Registro {
 	
 	public Registro() {}
 	
-	//Aqui iria el constructor que recibe paramentros
+	public Registro(int id, String date, int hora, int minima, int maxima, int media, int excesos, int id_aula,
+			int id_curso, int id_usuario, int id_centro) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.hora = hora;
+		this.minima = minima;
+		this.maxima = maxima;
+		this.media = media;
+		this.excesos = excesos;
+		this.id_aula = id_aula;
+		this.id_curso = id_curso;
+		this.id_usuario = id_usuario;
+		this.id_centro = id_centro;
+	}
+
+
 
 	public int getId() {
 		return id;
