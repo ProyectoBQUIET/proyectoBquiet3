@@ -6,10 +6,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorHome {
-	
-	@RequestMapping(value="/")
-	public ModelAndView on() {
-		return new ModelAndView("login"); 
+			
+	@RequestMapping("/")
+	public String login(){
+		return "login";
 	}
+	
+	
 
 }
