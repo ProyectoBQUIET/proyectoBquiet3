@@ -3,13 +3,15 @@ package com.empleodigital.bquiet.beans;
 public class Usuario {
 	private int id;
 	private String nombre;
+	private String pass;
 	private int tipoUsuario;
 	
 	public Usuario(){}
-	
-	public Usuario(int id, String nombre, int tipoUsuario) {
+
+	public Usuario(int id, String nombre, String pass, int tipoUsuario) {
 		this.id = id;
 		this.nombre = nombre;
+		this.pass = pass;
 		this.tipoUsuario = tipoUsuario;
 	}
 
@@ -29,6 +31,14 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	public int getTipoUsuario() {
 		return tipoUsuario;
 	}
@@ -39,8 +49,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", tipoUsuario=" + tipoUsuario + "]";
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", pass=" + pass + ", tipoUsuario=" + tipoUsuario + "]";
 	}
-	
+
 	
 }
