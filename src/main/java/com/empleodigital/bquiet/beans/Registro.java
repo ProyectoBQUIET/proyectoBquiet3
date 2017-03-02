@@ -4,7 +4,7 @@ public class Registro {
 	
 	private int id;
 	private String date;
-	private int hora;
+	private String hora;
 	private int minima;
 	private int maxima;
 	private int media;
@@ -16,7 +16,7 @@ public class Registro {
 	
 	public Registro() {}
 	
-	public Registro(int id, String date, int hora, int minima, int maxima, int media, int excesos, int id_aula,
+	public Registro(int id, String date, String hora, int minima, int maxima, int media, int excesos, int id_aula,
 			int id_curso, int id_usuario, int id_centro) {
 		super();
 		this.id = id;
@@ -50,11 +50,11 @@ public class Registro {
 		this.date = date;
 	}
 
-	public int getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(int hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 
