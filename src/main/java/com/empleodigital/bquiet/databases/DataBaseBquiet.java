@@ -8,15 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.empleodigital.bquiet.beans.Usuario;
 
 public class DataBaseBquiet extends DataBaseGenerica {
-	private JdbcTemplate jdbc;
+	private static JdbcTemplate jdbc = new JdbcTemplate(Conector.getDataSource());
 	
-	public static final String BASE_DATOS = "reservas";
-	
-	public DataBaseBquiet(){
-		this.jdbc = new JdbcTemplate(Conector.getDataSource());
-	}
-	
-	public ArrayList<Usuario> listaUsuarios(){
+	public static ArrayList<Usuario> listaUsuarios(){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		
 		String sql = "SELECT * FROM usuarios";
@@ -25,5 +19,20 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return usuarios;
 	}
 	
+	public static Usuario getUsuario(String nombre, String pass) {
+		
+		Usuario user=null;
+
+		try {
+			user = jdbc.queryForObject(
+					"SELECT * FROM usuarios WHERE nombre=? AND pass=?",
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{nombre, pass}
+					);
+		} catch (Exception e) {
+			System.out.println("El usuario no existe!");
+		}
+		return user;
+	}
 	
 }
