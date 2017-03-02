@@ -17,10 +17,10 @@ CREATE TABLE usuarios (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_tipousuario INT(1) NOT NULL,
 	nombre VARCHAR(50) UNIQUE NOT NULL,
-	pass VARCHAR(20) NOT NULL
+	pass VARCHAR(20) NOT NULL,
 	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id)
 
-) ENGINE=INNODB;
+) ENGINE = INNODB;
 
 CREATE TABLE centros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -56,7 +56,7 @@ CREATE TABLE usuarios_centros (
 CREATE TABLE registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	fecha DATE NOT NULL,
-	hora INT(2) NOT NULL,
+	hora TIME NOT NULL,
 	minima INT(5) NOT NULL,
 	maxima INT(5) NOT NULL,
 	media INT(5) NOT NULL,
@@ -78,9 +78,9 @@ INSERT INTO tipousuario (nombre) VALUES ('administrador');
 INSERT INTO tipousuario (nombre) VALUES ('superusuario');
 INSERT INTO tipousuario (nombre) VALUES ('usuario');
 
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (1, 'El primer administrador', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (2, 'El primer superusuario', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre) VALUES (3, 'El primer usuario', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (1, 'El primer administrador', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'El primer superusuario', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'El primer usuario', 'admin');
 
 INSERT INTO centros (nombre) VALUES ('La Termica');
 
@@ -93,5 +93,5 @@ INSERT INTO aulas (nombre, id_centro) VALUES ('Colmenar 3', 1);
 
 INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (1, 1);
 
-INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, 13, 10, 50, 30, 4, 2, 1, 2, 1);
-INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, 14, 12, 54, 32, 6, 2, 1, 2, 1);
+INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, CURRENT_TIME, 10, 50, 30, 4, 2, 1, 2, 1);
+INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, CURRENT_TIME, 12, 54, 32, 6, 2, 1, 2, 1);
