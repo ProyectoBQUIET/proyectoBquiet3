@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>Listado de centros</h2>
+<h2>Listado de centros </h2>
 
 
 <a href="registroCentro" class="btn btn-warning">Añadir centro</a>

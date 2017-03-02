@@ -40,7 +40,7 @@ public class DataBaseGenerica {
 	 */
 	public boolean loadDriver() {
 
-		return this.loadDriver(this.DRIVER_MYSQL);
+		return this.loadDriver(this.DRIVER_MYSQL); 
 	}
 
 

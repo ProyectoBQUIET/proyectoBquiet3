@@ -17,7 +17,7 @@ public class Conector {
 		dataSource.setUsername(res.getString("jdbc-user"));
 		dataSource.setPassword(res.getString("jdbc-pass"));
 		
-		return dataSource;
+		return dataSource; 
 	}
 	
 	

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>Informacion Super Usuario</h2>
+<h2>Informacion Super Usuario </h2>
 
 
 <h2>Lista de Usuarios</h2>
