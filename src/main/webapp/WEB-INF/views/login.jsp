@@ -58,9 +58,9 @@
     <img src="resources/img/P1d.png" class="imagen"  >
     
     <!--  login formu-->
-    <form id="loginform" method="" action="">
-        <input type="text" class="input" placeholder="Usuario" /> 
-        <input type="password" class="input" placeholder="Contraseña" />
+    <form id="loginform" method="get" action="login">
+        <input type="text" class="input" placeholder="Usuario" name="user"/> 
+        <input type="password" class="input" placeholder="Contraseña"  name="pass"/>
         <input type="submit" class="loginbutton" value="ENTRAR" />
     </form>
 <!--  formulario -->

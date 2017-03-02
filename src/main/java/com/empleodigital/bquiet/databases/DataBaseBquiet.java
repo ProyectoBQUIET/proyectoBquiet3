@@ -39,6 +39,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		}
 		return user;
 	}
+	
 	public static ArrayList<Centro> listaColegios(){
 
 		String sql = "SELECT * FROM centros";
@@ -49,5 +50,8 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 		return listaCentros;
 	}
+	
+	
+	
 	
 }
