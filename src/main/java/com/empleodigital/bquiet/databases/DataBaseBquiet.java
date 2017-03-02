@@ -2,6 +2,7 @@ package com.empleodigital.bquiet.databases;
 
 import java.util.ArrayList;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -18,9 +19,12 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	
 	public ArrayList<Usuario> listaUsuarios(){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-		
-		String sql = "SELECT * FROM usuarios";
-		usuarios = (ArrayList<Usuario>)jdbc.query(sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
+		try{
+			String sql = "SELECT * FROM usuarios";
+			usuarios = (ArrayList<Usuario>)jdbc.query(sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
+		}catch(EmptyResultDataAccessException e){
+			System.out.println("Lista usuarios vacia");
+		}
 		
 		return usuarios;
 	}

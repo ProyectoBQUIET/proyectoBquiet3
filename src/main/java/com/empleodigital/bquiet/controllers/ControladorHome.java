@@ -14,12 +14,6 @@ public class ControladorHome {
 		return "login";
 	}
 	
-	@RequestMapping("/")
-	public String leddgin(){
-		
-		
-		return "login";
-	}
 	
 
 }
