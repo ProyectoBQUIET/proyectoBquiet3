@@ -57,8 +57,13 @@
     <!-- logo -->
     <img src="resources/img/P1d.png" class="imagen"  >
     
+    
+    
     <!--  login formu-->
     <form id="loginform" method="get" action="login">
+	    <c:if test="${not empty mensajeError}">
+	    		<p><strong>${mensajeError}</strong></p>
+	    </c:if>
         <input type="text" class="input" placeholder="Usuario" name="user"/> 
         <input type="password" class="input" placeholder="Contraseña"  name="pass"/>
         <input type="submit" class="loginbutton" value="ENTRAR" />

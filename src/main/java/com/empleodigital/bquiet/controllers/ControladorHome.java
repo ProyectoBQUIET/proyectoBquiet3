@@ -1,18 +1,26 @@
 package com.empleodigital.bquiet.controllers;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.databases.DataBaseBquiet;
 
 @Controller
 public class ControladorHome {
-			
+	
+	@Autowired
+	private HttpSession session;
+	
 	@RequestMapping("/")
 	public String inicio(){
+		
 		return "login";
 	}
 	
@@ -23,7 +31,18 @@ public class ControladorHome {
 		Usuario usuario=DataBaseBquiet.getUsuario(user, pass);
 		
 		if(usuario!=null){
-			mav.setViewName("homeAdministrador");
+			session.setAttribute("usuarioLogueado", usuario);
+			System.out.println(usuario.getId_tipousuario());
+			if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
+				mav.setViewName("homeAdministrador");
+				
+			}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
+				mav.setViewName("infoCentro");
+			}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
+				mav.setViewName("infoUsuario");
+			}
+		}else{
+			mav.addObject("mensajeError","Usuario o contraseña incorrecto");
 		}
 				
 		return mav;

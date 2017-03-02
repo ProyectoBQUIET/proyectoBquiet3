@@ -14,5 +14,7 @@
 
 <a href="registroCentro" class="btn btn-warning">Añadir centro</a>
 
+<h3>${usuarioLogueado}</h3>
+
 </body>
 </html>
