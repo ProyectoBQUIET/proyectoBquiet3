@@ -28,15 +28,17 @@ public class GestionarCentro {
 			
 			Centro centro = DataBaseBquiet.getCentro(nombrecentro);
 			
+			mav.setViewName("administradorCentro");
+			
 			if(centro !=null) {
-				
-				mav.setViewName("administradorCentro");
 				
 				mav.addObject("centro", centro);
 				
 				mav.addObject("superusuario", DataBaseBquiet.getSuperUsuario(centro.getId()));
 				
 				mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(centro.getId()));
+				
+				mav.addObject("aulas", DataBaseBquiet.getAulasByCentroId(centro.getId()));
 				
 			}
 			

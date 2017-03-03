@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.empleodigital.bquiet.beans.Aula;
 import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
@@ -58,14 +59,37 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	
 	// Aqui iva un método listaUsuarios pero no sabiamos por que xd
 	
+	public static boolean agregarUsuario (String nombreUsuario, String passUsuario, int id_centro) {
+		
+		boolean exito = false;
+
+		try{
+			String sql= "INSERT INTO usuarios (nombre,pass,id_tipousuario) VALUES (?,?,3)";
+			jdbc.update(sql, new Object[] {nombreUsuario,passUsuario});
+			
+			Usuario usuario = jdbc.queryForObject("SELECT * FROM usuarios WHERE nombre=?",
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{nombreUsuario});
+	
+			jdbc.update("INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (?, ?)",
+					new Object[]{usuario.getId(), id_centro});
+			
+			exito = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return exito;
+	}
+	
 	public static ArrayList<Usuario> getUsuariosByCentroId(int id_centro){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		try{
-			String sql = "SELECT * FROM usuarios_centros,usuarios where usuarios_centros.id_centro=? AND usuarios.id_tipousuario=3 AND usuarios.id=usuarios_centros.id_usuario";
+			String sql = "SELECT * FROM usuarios_centros, usuarios WHERE usuarios_centros.id_centro=? AND usuarios.id_tipousuario=3 AND usuarios.id=usuarios_centros.id_usuario";
 			usuarios = (ArrayList<Usuario>)jdbc.query(sql,
 					new BeanPropertyRowMapper<Usuario>(Usuario.class),
 					new Object[]{id_centro});
-			System.out.println(usuarios);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -73,7 +97,23 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return usuarios;
 	}
 	
+	public static ArrayList<Aula> getAulasByCentroId(int id_centro){
+		ArrayList<Aula> aulas = new ArrayList<Aula>();
+		try{
+			String sql = "SELECT * FROM aulas WHERE aulas.id_centro=?";
+			aulas = (ArrayList<Aula>)jdbc.query(sql,
+					new BeanPropertyRowMapper<Aula>(Aula.class),
+					new Object[]{id_centro});
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return aulas;
+	}
+	
 	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass) {
+		
+		boolean exito = false;
 		
 		try {
 			jdbc.update("INSERT INTO centros (nombre) VALUES (?)", new Object[]{nombreCentro});
@@ -91,11 +131,13 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			
 			jdbc.update("INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (?, ?)",
 					new Object[]{user.getId(), centro.getId()});
+			
+			exito = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return true;
+		return exito;
 	}
 	
 	public static Centro getCentro(String nombre) {

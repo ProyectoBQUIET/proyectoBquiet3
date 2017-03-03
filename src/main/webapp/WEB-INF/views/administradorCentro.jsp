@@ -26,7 +26,25 @@
 	</c:forEach>
 </ul>
 
-<a href="registroUsuario" class="btn btn-warning">Añadir Usuario</a>
+<form>
+	<input type="text" name="nombreUsuario" placeholder="Introduce el nombre del nuevo Usuario" required="required"/>
+	<input type="password" name="passUsuario" placeholder="Introduce la contraseña del nuevo Usuario" required="required"/>
+	<input type="number" name="id_centro" readonly="readonly" value="${centro.id}" />
+	<button formaction='<c:url value="/nuevoUsuario"/>' formmethod="post">Registrar Usuario</button>
+</form>
+
+<h2>Lista de Aulas</h2>
+
+<ul>
+	<c:forEach items="${aulas}" var="aula">
+	<li>${aula}</li>
+	</c:forEach>
+</ul>
+
+<form>
+	<input type="text" name="nombreUsuario" placeholder="Introduce el nombre de la nueva Aula" required="required"/>
+	<button formaction="nuevaaula" formmethod="post">Registrar Aula</button>
+</form>
 
 </body>
 </html>
