@@ -13,6 +13,10 @@ import com.empleodigital.bquiet.beans.Usuario;
 public class DataBaseBquiet extends DataBaseGenerica {
 	private static JdbcTemplate jdbc = new JdbcTemplate(Conector.getDataSource());
 	
+	/**
+	 * [DataBaseBquiet] Este metodo nos devuelve un ArrayList
+	 *  con todos los usuarios en la DataBase sin filtro de tipo de Usuario
+	 */
 	public static ArrayList<Usuario> listaUsuarios(){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		try{
@@ -25,6 +29,11 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return usuarios;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo nos devuelve un objeto de tipo usuario
+	 *  obtenido de la DataBase, si los parametros de nombre y pass recibidos no
+	 *  coinciden en la DataBase el valor del objeto sera null
+	 */
 	public static Usuario getUsuario(String nombre, String pass) {
 		
 		Usuario user = null;
@@ -41,6 +50,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return user;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo nos devuelve un ArrayList con todos
+	 *  los centros en la DataBase sin filtros
+	 */
 	public static ArrayList<Centro> listaCentros(){
 
 		ArrayList<Centro> listaCentros = new ArrayList<Centro>();
@@ -59,6 +72,11 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	
 	// Aqui iva un método listaUsuarios pero no sabiamos por que xd
 	
+	/**
+	 * [DataBaseBquiet] Este metodo inserta un objeto en la DataBase
+	 *  devuelve true si el usuario no existia,
+	 *  devuelve false si el usuario existia
+	 */
 	public static boolean agregarUsuario (String nombreUsuario, String passUsuario, int id_centro) {
 		
 		boolean exito = false;
@@ -83,6 +101,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return exito;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo devuelve un ArrayList de Usuario
+	 * filtrado por id_centro
+	 */
 	public static ArrayList<Usuario> getUsuariosByCentroId(int id_centro){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		try{
@@ -97,6 +119,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return usuarios;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo devuelve un ArrayList de Aula
+	 * filtrado por id_centro 
+	 */
 	public static ArrayList<Aula> getAulasByCentroId(int id_centro){
 		ArrayList<Aula> aulas = new ArrayList<Aula>();
 		try{
@@ -111,6 +137,11 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return aulas;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo inserta un Centro en la DataBase,
+	 *  devuelve true si el centro no existia,
+	 *  devuelve false si el centro si existia
+	 */
 	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass) {
 		
 		boolean exito = false;
@@ -139,7 +170,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 		return exito;
 	}
-	
+	/**
+	 * [DataBaseBquiet] Este metodo devuelve un objeto Centro
+	 * filtado por el nombre
+	 */
 	public static Centro getCentro(String nombre) {
 		
 		Centro centro = null;
@@ -156,6 +190,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return centro;
 	}
 	
+	/**
+	 * [DataBaseBquiet] Este metodo devuelve un Objeto Usuario (TipoUsuario.SUPERUSUARIO),
+	 * filtrado por centro_id
+	 */
 	public static Usuario getSuperUsuario(int centro_id) {
 		
 		Usuario user = null;
@@ -177,7 +215,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return user;
 	}
 	
-	
+	/**
+	 * [DataBaseBquiet] Este metodo devuelbe un objeto Centro
+	 * filtrado por id_centro
+	 */
 	public static Centro getCentroById(int id_centro){
 		Centro centro = null;
 		try{
