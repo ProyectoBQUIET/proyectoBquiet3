@@ -18,7 +18,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			String sql = "SELECT * FROM usuarios";
 			usuarios = (ArrayList<Usuario>)jdbc.query(sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
 		}catch(Exception e){
-			System.out.println("Lista usuarios vacia");
+			e.printStackTrace();
 		}
 		
 		return usuarios;
@@ -26,7 +26,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	
 	public static Usuario getUsuario(String nombre, String pass) {
 		
-		Usuario user=null;
+		Usuario user = null;
 
 		try {
 			user = jdbc.queryForObject(
@@ -35,7 +35,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 					new Object[]{nombre, pass}
 					);
 		} catch (Exception e) {
-			System.out.println("El usuario no existe!");
+			e.printStackTrace();
 		}
 		return user;
 	}
@@ -49,21 +49,25 @@ public class DataBaseBquiet extends DataBaseGenerica {
 					"SELECT * FROM centros", 
 					new BeanPropertyRowMapper<Centro>(Centro.class)
 					);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return listaCentros;
 	}
 	
-	public static ArrayList<Usuario> listaUsuarios(Usuario u){
+	// Aqui iva un método listaUsuarios pero no sabiamos por que xd
+	
+	public static ArrayList<Usuario> getUsuariosByCentroId(int id_centro){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		try{
-			String sql = "SELECT * FROM usuarios_centros WHERE id_usuario=?";
+			String sql = "SELECT * FROM usuarios_centros,usuarios where usuarios_centros.id_centro=? AND usuarios.id_tipousuario=3 AND usuarios.id=usuarios_centros.id_usuario";
 			usuarios = (ArrayList<Usuario>)jdbc.query(sql,
 					new BeanPropertyRowMapper<Usuario>(Usuario.class),
-					new Object[]{u.getId()});
+					new Object[]{id_centro});
 			System.out.println(usuarios);
 		}catch(Exception e){
-			System.out.println("Lista usuarios vacia");
+			e.printStackTrace();
 		}
 		
 		return usuarios;
@@ -94,7 +98,41 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return true;
 	}
 	
+	public static Centro getCentro(String nombre) {
+		
+		Centro centro = null;
+
+		try {
+			centro = jdbc.queryForObject(
+					"SELECT * FROM centros WHERE nombre=?",
+					new BeanPropertyRowMapper<Centro>(Centro.class),
+					new Object[]{nombre}
+					);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return centro;
+	}
 	
-	
+	public static Usuario getSuperUsuario(int centro_id) {
+		
+		Usuario user = null;
+		
+		try {
+			
+			String sql = "SELECT * FROM usuarios_centros,usuarios where usuarios_centros.id_centro=? AND usuarios.id_tipousuario=2 AND usuarios.id=usuarios_centros.id_usuario";
+			
+			user = jdbc.queryForObject(
+					sql,
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{centro_id}
+					);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 	
 }

@@ -17,7 +17,9 @@
 <ul>
 	<li>Centros</li>
 	<c:forEach items="${centros}" var="centro">
-	<li>${centro}</li>
+	<li>
+		<a href="<c:url value='/gestionar/${centro.nombre}'/>">${centro}</a>
+	</li>
 	</c:forEach>
 </ul>
 
