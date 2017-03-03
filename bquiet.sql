@@ -78,28 +78,4 @@ INSERT INTO tipousuario (nombre) VALUES ('administrador');
 INSERT INTO tipousuario (nombre) VALUES ('superusuario');
 INSERT INTO tipousuario (nombre) VALUES ('usuario');
 
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (1, 'El primer administrador', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'El primer superusuario', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'ivan', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristian', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'sergio', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristina', 'admin');
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'maria jose', 'admin');
-
-INSERT INTO centros (nombre) VALUES ('La Termica');
-
-INSERT INTO cursos (nombre, id_centro) VALUES ('Cursjo de Java', 1);
-INSERT INTO cursos (nombre, id_centro) VALUES ('Cursjo de Apps', 1);
-
-INSERT INTO aulas (nombre, id_centro) VALUES ('Colmenar 1', 1);
-INSERT INTO aulas (nombre, id_centro) VALUES ('Colmenar 2', 1);
-INSERT INTO aulas (nombre, id_centro) VALUES ('Colmenar 3', 1);
-
-INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (2, 1);
-INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (3, 1);
-INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (4, 1);
-INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (5, 1);
-INSERT INTO usuarios_centros (id_usuario, id_centro) VALUES (6, 1);
-
-INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, CURRENT_TIME, 10, 50, 30, 4, 2, 1, 3, 1);
-INSERT INTO registros (fecha, hora, minima, maxima, media, excesos, id_aula, id_curso, id_usuario, id_centro) VALUES (CURRENT_DATE, CURRENT_TIME, 12, 54, 32, 6, 2, 1, 3, 1);
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (1, 'admin', 'admin');
