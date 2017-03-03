@@ -33,19 +33,5 @@
 	<button formaction='<c:url value="/nuevoUsuario"/>' formmethod="post">Registrar Usuario</button>
 </form>
 
-<h2>Lista de Aulas</h2>
-
-<ul>
-	<c:forEach items="${aulas}" var="aula">
-	<li>${aula}</li>
-	</c:forEach>
-</ul>
-
-<form>
-	<input type="text" name="nombreAula" placeholder="Introduce el nombre de la nueva Aula" required="required"/>
-	<input type="number" name="id_centro" readonly="readonly" value="${centro.id}"  hidden="hidden"/>
-	<button formaction='<c:url value="/nuevaAula"/>' formmethod="post">Registrar Aula</button>
-</form>
-
 </body>
 </html>

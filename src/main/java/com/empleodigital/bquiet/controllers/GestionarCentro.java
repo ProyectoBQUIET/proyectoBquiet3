@@ -30,7 +30,7 @@ public class GestionarCentro {
 			
 			mav.setViewName("administradorCentro");
 			
-			if(centro !=null) {
+			if(centro != null) {
 				
 				mav.addObject("centro", centro);
 				
@@ -38,7 +38,6 @@ public class GestionarCentro {
 				
 				mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(centro.getId()));
 				
-				mav.addObject("aulas", DataBaseBquiet.getAulasByCentroId(centro.getId()));
 				
 			}
 			

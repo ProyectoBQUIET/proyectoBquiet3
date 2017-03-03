@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.empleodigital.bquiet.beans.Aula;
 import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
@@ -120,24 +119,6 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	}
 	
 	/**
-	 * [DataBaseBquiet] Este metodo devuelve un ArrayList de Aula
-	 * filtrado por id_centro 
-	 */
-	public static ArrayList<Aula> getAulasByCentroId(int id_centro){
-		ArrayList<Aula> aulas = new ArrayList<Aula>();
-		try{
-			String sql = "SELECT * FROM aulas WHERE aulas.id_centro=?";
-			aulas = (ArrayList<Aula>)jdbc.query(sql,
-					new BeanPropertyRowMapper<Aula>(Aula.class),
-					new Object[]{id_centro});
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return aulas;
-	}
-	
-	/**
 	 * [DataBaseBquiet] Este metodo inserta un Centro en la DataBase,
 	 *  devuelve true si el centro no existia,
 	 *  devuelve false si el centro si existia
@@ -230,23 +211,6 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		}
 		return centro;
 		
-	}
-	
-	/**
-	 * Soon
-	 */
-	public static boolean agregarAula(String nombreAula, int id_centro) {
-		Boolean exito = false;
-		
-		try {
-			
-			jdbc.update("INSERT INTO aulas (nombre, id_centro) VALUES(?,?)", new Object[]{nombreAula, id_centro});
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return exito;
 	}
 	
 }

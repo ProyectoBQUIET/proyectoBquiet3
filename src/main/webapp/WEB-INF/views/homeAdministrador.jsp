@@ -34,7 +34,7 @@
 
 <h3>${usuarioLogueado}</h3>
 
-Centros
+<h2>CENTROS</h2>
 <ul>
 	<c:forEach items="${centros}" var="centro">
 	<li>

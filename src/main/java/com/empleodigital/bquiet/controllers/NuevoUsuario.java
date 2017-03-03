@@ -47,8 +47,6 @@ public class NuevoUsuario {
 					
 					mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(id_centro));
 					
-					mav.addObject("aulas", DataBaseBquiet.getAulasByCentroId(id_centro));
-					
 					mav.setViewName("administradorCentro");
 					
 				}
