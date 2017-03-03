@@ -232,4 +232,21 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
+	/**
+	 * Soon
+	 */
+	public static boolean agregarAula(String nombreAula, int id_centro) {
+		Boolean exito = false;
+		
+		try {
+			
+			jdbc.update("INSERT INTO aulas (nombre, id_centro) VALUES(?,?)", new Object[]{nombreAula, id_centro});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return exito;
+	}
+	
 }

@@ -1,7 +1,5 @@
 package com.empleodigital.bquiet.controllers;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

@@ -42,8 +42,9 @@
 </ul>
 
 <form>
-	<input type="text" name="nombreUsuario" placeholder="Introduce el nombre de la nueva Aula" required="required"/>
-	<button formaction="nuevaaula" formmethod="post">Registrar Aula</button>
+	<input type="text" name="nombreAula" placeholder="Introduce el nombre de la nueva Aula" required="required"/>
+	<input type="number" name="id_centro" readonly="readonly" value="${centro.id}"  hidden="hidden"/>
+	<button formaction='<c:url value="/nuevaAula"/>' formmethod="post">Registrar Aula</button>
 </form>
 
 </body>
