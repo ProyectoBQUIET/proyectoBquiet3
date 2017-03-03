@@ -43,6 +43,10 @@ public class NuevoUsuario {
 					
 					DataBaseBquiet.agregarUsuario(username, pass, id_centro);
 					
+					mav.addObject("centro", DataBaseBquiet.getCentroById(id_centro));
+					
+					mav.addObject("superusuario", DataBaseBquiet.getSuperUsuario(id_centro));
+					
 					mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(id_centro));
 					
 					mav.addObject("aulas", DataBaseBquiet.getAulasByCentroId(id_centro));

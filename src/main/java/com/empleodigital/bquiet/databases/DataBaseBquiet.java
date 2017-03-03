@@ -177,4 +177,18 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return user;
 	}
 	
+	
+	public static Centro getCentroById(int id_centro){
+		Centro centro = null;
+		try{
+			
+			centro = jdbc.queryForObject("SELECT * FROM centros WHERE id=?", new BeanPropertyRowMapper<Centro>(Centro.class),new Object[]{id_centro});
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return centro;
+		
+	}
+	
 }

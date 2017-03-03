@@ -29,7 +29,7 @@
 <form>
 	<input type="text" name="nombreUsuario" placeholder="Introduce el nombre del nuevo Usuario" required="required"/>
 	<input type="password" name="passUsuario" placeholder="Introduce la contraseña del nuevo Usuario" required="required"/>
-	<input type="number" name="id_centro" readonly="readonly" value="${centro.id}" />
+	<input type="number" name="id_centro" readonly="readonly" value="${centro.id}"  hidden="hidden"/>
 	<button formaction='<c:url value="/nuevoUsuario"/>' formmethod="post">Registrar Usuario</button>
 </form>
 
