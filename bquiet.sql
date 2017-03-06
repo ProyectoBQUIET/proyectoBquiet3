@@ -25,7 +25,8 @@ CREATE TABLE usuarios (
 CREATE TABLE centros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	nombre VARCHAR(50) NOT NULL,
-	provincia VARCHAR(50) NOT NULL default ''
+	provincia VARCHAR(50) NOT NULL default '',
+	direccion VARCHAR(150) NOT NULL default ''
 
 ) ENGINE = INNODB;
 
