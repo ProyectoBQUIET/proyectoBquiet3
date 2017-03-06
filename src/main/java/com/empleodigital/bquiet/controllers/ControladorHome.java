@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.empleodigital.bquiet.beans.TipoUsuario;
@@ -27,6 +26,7 @@ public class ControladorHome {
 		return "login";
 	}
 	
+	
 	@RequestMapping("login")
 	public ModelAndView login(){
 		ModelAndView mav = new ModelAndView("login");
@@ -34,21 +34,6 @@ public class ControladorHome {
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
 		
-<<<<<<< HEAD
-		if(usuario!=null){
-			session.setAttribute("usuarioLogueado", usuario);
-			System.out.println(usuario.getId_tipousuario());
-			if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
-				mav.setViewName("homeAdministrador");
-				mav.addObject("centros", DataBaseBquiet.listaCentros());
-			}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
-				mav.setViewName("homeSuperUsuario");
-				mav.addObject("superusuario",DataBaseBquiet.getUsuario(user, pass));
-				mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
-				mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
-			}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
-				mav.setViewName("homeUsuario");
-=======
 		if(user!=null && pass!=null) {
 			
 			Usuario usuario=DataBaseBquiet.getUsuario(user, pass);
@@ -60,14 +45,16 @@ public class ControladorHome {
 					mav.setViewName("homeAdministrador");
 					mav.addObject("centros", DataBaseBquiet.listaCentros());
 				}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
-					mav.setViewName("infoCentro");
+					mav.setViewName("homeSuperUsuario");
+					mav.addObject("superusuario",DataBaseBquiet.getUsuario(user, pass));
+					mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
+					mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
 				}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
-					mav.setViewName("infoUsuario");
+					mav.setViewName("homeUsuario");
 				}
 			}else{
 				mav.addObject("mensajeError","Usuario o contraseña incorrecto");
 				
->>>>>>> 93cb7b6ece0122e0f3effb0170478bfbb7222252
 			}
 		} else {
 			mav.addObject("mensajeError","Usuario o contraseña incorrecto");
@@ -76,8 +63,6 @@ public class ControladorHome {
 				
 		return mav;
 	}
-	
-	
+}
 	
 
-}
