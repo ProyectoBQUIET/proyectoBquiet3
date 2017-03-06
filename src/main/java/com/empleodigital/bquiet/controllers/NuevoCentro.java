@@ -31,10 +31,11 @@ public class NuevoCentro {
 			mav.setViewName("homeAdministrador");
 
 			String centro = request.getParameter("nuevoCentro");
+			String provincia = request.getParameter("provinciaCentro");
 			String superusuario = request.getParameter("nuevoSuperUsuario");
 			String pass = request.getParameter("passSuperUsuario");
 
-			DataBaseBquiet.agregarCentro(centro, superusuario, pass);
+			DataBaseBquiet.agregarCentro(centro, superusuario, pass,provincia);
 			mav.addObject("centros", DataBaseBquiet.listaCentros());		
 		}
 		return mav;

@@ -28,7 +28,7 @@ public class GestionarCentro {
 			
 			Centro centro = DataBaseBquiet.getCentro(nombrecentro);
 			
-			mav.setViewName("administradorCentro");
+			mav.setViewName("homeSuperUsuario");
 			
 			if(centro != null) {
 				

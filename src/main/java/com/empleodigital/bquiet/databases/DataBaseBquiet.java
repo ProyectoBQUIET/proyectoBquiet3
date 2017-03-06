@@ -123,12 +123,12 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	 *  devuelve true si el centro no existia,
 	 *  devuelve false si el centro si existia
 	 */
-	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass) {
+	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass, String provincia) {
 		
 		boolean exito = false;
 		
 		try {
-			jdbc.update("INSERT INTO centros (nombre) VALUES (?)", new Object[]{nombreCentro});
+			jdbc.update("INSERT INTO centros (nombre,provincia) VALUES (?,?)", new Object[]{nombreCentro,provincia});
 			
 			Centro centro = jdbc.queryForObject("SELECT * FROM centros WHERE nombre=?",
 					new BeanPropertyRowMapper<Centro>(Centro.class),

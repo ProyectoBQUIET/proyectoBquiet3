@@ -3,12 +3,14 @@ package com.empleodigital.bquiet.beans;
 public class Centro {
 	private int id;
 	private String nombre;
+	private String provincia;
 	
 	public Centro(){}
-	
-	public Centro(int id, String nombre) {
+
+	public Centro(int id, String nombre, String provincia) {
 		this.id = id;
 		this.nombre = nombre;
+		this.provincia = provincia;
 	}
 
 	public int getId() {
@@ -27,9 +29,19 @@ public class Centro {
 		this.nombre = nombre;
 	}
 
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
 	@Override
 	public String toString() {
-		return "Centro [id=" + id + ", nombre=" + nombre + "]";
+		return "Centro [id=" + id + ", nombre=" + nombre + ", provincia=" + provincia + "]";
 	}
+	
+	
 	
 }
