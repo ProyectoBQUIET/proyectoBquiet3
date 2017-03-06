@@ -1,5 +1,6 @@
 package com.empleodigital.bquiet.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class ControladorHome {
 	
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private HttpServletRequest request;
 	
 	@RequestMapping("/")
 	public String inicio(){
@@ -25,23 +28,32 @@ public class ControladorHome {
 	}
 	
 	@RequestMapping("login")
-	public ModelAndView login(@RequestParam ("user") String user, @RequestParam ("pass") String pass){
+	public ModelAndView login(){
 		ModelAndView mav = new ModelAndView("login");
 		
-		Usuario usuario=DataBaseBquiet.getUsuario(user, pass);
+		String user = request.getParameter("user");
+		String pass = request.getParameter("pass");
 		
-		if(usuario!=null){
-			session.setAttribute("usuarioLogueado", usuario);
-			System.out.println(usuario.getId_tipousuario());
-			if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
-				mav.setViewName("homeAdministrador");
-				mav.addObject("centros", DataBaseBquiet.listaCentros());
-			}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
-				mav.setViewName("infoCentro");
-			}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
-				mav.setViewName("infoUsuario");
+		if(user!=null && pass!=null) {
+			
+			Usuario usuario=DataBaseBquiet.getUsuario(user, pass);
+			
+			if(usuario!=null){
+				session.setAttribute("usuarioLogueado", usuario);
+				System.out.println(usuario.getId_tipousuario());
+				if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
+					mav.setViewName("homeAdministrador");
+					mav.addObject("centros", DataBaseBquiet.listaCentros());
+				}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
+					mav.setViewName("infoCentro");
+				}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
+					mav.setViewName("infoUsuario");
+				}
+			}else{
+				mav.addObject("mensajeError","Usuario o contraseña incorrecto");
+				
 			}
-		}else{
+		} else {
 			mav.addObject("mensajeError","Usuario o contraseña incorrecto");
 			
 		}

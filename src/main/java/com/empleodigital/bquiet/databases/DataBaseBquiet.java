@@ -49,6 +49,22 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return user;
 	}
 	
+	public static Usuario getUsuario(String nombre) {
+		
+		Usuario user = null;
+
+		try {
+			user = jdbc.queryForObject(
+					"SELECT * FROM usuarios WHERE nombre=?",
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{nombre}
+					);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 	/**
 	 * [DataBaseBquiet] Este metodo nos devuelve un ArrayList con todos
 	 *  los centros en la DataBase sin filtros

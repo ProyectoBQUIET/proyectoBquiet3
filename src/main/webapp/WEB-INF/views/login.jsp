@@ -60,7 +60,7 @@
     
     
     <!--  login formu-->
-    <form id="loginform" method="get" action="login">
+    <form id="loginform" method="post" action="login">
 	    <c:if test="${not empty mensajeError}">
 	    		<p><strong>${mensajeError}</strong></p>
 	    </c:if>
