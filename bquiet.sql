@@ -18,7 +18,7 @@ CREATE TABLE usuarios (
 	id_tipousuario INT(1) NOT NULL,
 	nombre VARCHAR(50) UNIQUE NOT NULL,
 	pass VARCHAR(20) NOT NULL,
-	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id)
+	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id) ON DELETE CASCADE
 
 ) ENGINE = INNODB;
 
@@ -35,8 +35,8 @@ CREATE TABLE usuarios_centros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_usuario INT(50) NOT NULL,
 	id_centro INT(5) NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id),
-	FOREIGN KEY (id_centro) REFERENCES centros (id)
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE,
+	FOREIGN KEY (id_centro) REFERENCES centros (id) ON DELETE CASCADE
 
 ) ENGINE = INNODB;
 
@@ -47,7 +47,7 @@ CREATE TABLE registros (
 	media INT(5) NOT NULL,
 	valor INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) 
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
 ) ENGINE = INNODB;
 
 /**** INSERCION EN TABLAS ****/

@@ -253,6 +253,13 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
+	public static void borrarCentro(String nombre) {
+		
+		String sql = "DELETE FROM centros WHERE nombre=?";
+		jdbc.update(sql, new Object[]{nombre});
+		
+	}
+	
 
 	
 	

@@ -59,7 +59,7 @@
 	</div>
 
 	<!-- logo -->
-	<img src="resources/img/P1d.png" class="imagen" />
+	<img src='<c:url value="resources/img/P1d.png"/>' class="imagen" />
 
 	<h2>Listado de centros</h2>
 
@@ -68,7 +68,7 @@
 	<h2>CENTROS</h2>
 	<ul>
 		<c:forEach items="${centros}" var="centro">
-			<li> ${centro.nombre} (${centro.provincia}) <a href="<c:url value='/gestionar/${centro.nombre}'/>">Gestionar</a> <a href="">Eliminar</a>
+			<li> ${centro.nombre} (${centro.provincia}) <a href="<c:url value='/gestionar/${centro.nombre}'/>">Gestionar</a> <a href='<c:url value="/eliminarcentro/${centro.nombre}"/>'>Eliminar</a>
 			</li>
 		</c:forEach>
 	</ul>
