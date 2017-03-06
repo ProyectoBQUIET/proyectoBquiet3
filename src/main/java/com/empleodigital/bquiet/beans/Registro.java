@@ -5,34 +5,20 @@ public class Registro {
 	private int id;
 	private String date;
 	private String hora;
-	private int minima;
-	private int maxima;
 	private int media;
-	private int excesos;
-	private int id_aula;
-	private int id_curso;
+	private int valor;
 	private int id_usuario;
-	private int id_centro;
 	
 	public Registro() {}
-	
-	public Registro(int id, String date, String hora, int minima, int maxima, int media, int excesos, int id_aula,
-			int id_curso, int id_usuario, int id_centro) {
-		super();
+
+	public Registro(int id, String date, String hora, int media, int valor, int id_usuario) {
 		this.id = id;
 		this.date = date;
 		this.hora = hora;
-		this.minima = minima;
-		this.maxima = maxima;
 		this.media = media;
-		this.excesos = excesos;
-		this.id_aula = id_aula;
-		this.id_curso = id_curso;
+		this.valor = valor;
 		this.id_usuario = id_usuario;
-		this.id_centro = id_centro;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -58,22 +44,6 @@ public class Registro {
 		this.hora = hora;
 	}
 
-	public int getMinima() {
-		return minima;
-	}
-
-	public void setMinima(int minima) {
-		this.minima = minima;
-	}
-
-	public int getMaxima() {
-		return maxima;
-	}
-
-	public void setMaxima(int maxima) {
-		this.maxima = maxima;
-	}
-
 	public int getMedia() {
 		return media;
 	}
@@ -82,28 +52,12 @@ public class Registro {
 		this.media = media;
 	}
 
-	public int getExcesos() {
-		return excesos;
+	public int getValor() {
+		return valor;
 	}
 
-	public void setExcesos(int excesos) {
-		this.excesos = excesos;
-	}
-
-	public int getId_aula() {
-		return id_aula;
-	}
-
-	public void setId_aula(int id_aula) {
-		this.id_aula = id_aula;
-	}
-
-	public int getId_curso() {
-		return id_curso;
-	}
-
-	public void setId_curso(int id_curso) {
-		this.id_curso = id_curso;
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
 	public int getId_usuario() {
@@ -114,19 +68,11 @@ public class Registro {
 		this.id_usuario = id_usuario;
 	}
 
-	public int getId_centro() {
-		return id_centro;
-	}
-
-	public void setId_centro(int id_centro) {
-		this.id_centro = id_centro;
-	}
-
 	@Override
 	public String toString() {
-		return "Registros [id=" + id + ", date=" + date + ", hora=" + hora + ", minima=" + minima + ", maxima=" + maxima
-				+ ", media=" + media + ", excesos=" + excesos + ", id_aula=" + id_aula + ", id_curso=" + id_curso
-				+ ", id_usuario=" + id_usuario + ", id_centro=" + id_centro + "]";
+		return "Registro [id=" + id + ", date=" + date + ", hora=" + hora + ", media=" + media + ", valor=" + valor
+				+ ", id_usuario=" + id_usuario + "]";
 	}
+	
 	
 }
