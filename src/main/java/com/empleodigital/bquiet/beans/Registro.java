@@ -3,7 +3,7 @@ package com.empleodigital.bquiet.beans;
 public class Registro {
 	
 	private int id;
-	private String date;
+	private String fecha;
 	private String hora;
 	private int media;
 	private int valor;
@@ -11,9 +11,10 @@ public class Registro {
 	
 	public Registro() {}
 
-	public Registro(int id, String date, String hora, int media, int valor, int id_usuario) {
+	public Registro(int id, String fecha, String hora, int media, int valor, int id_usuario) {
+		super();
 		this.id = id;
-		this.date = date;
+		this.fecha = fecha;
 		this.hora = hora;
 		this.media = media;
 		this.valor = valor;
@@ -28,12 +29,12 @@ public class Registro {
 		this.id = id;
 	}
 
-	public String getDate() {
-		return date;
+	public String getFecha() {
+		return fecha;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getHora() {
@@ -70,9 +71,8 @@ public class Registro {
 
 	@Override
 	public String toString() {
-		return "Registro [id=" + id + ", date=" + date + ", hora=" + hora + ", media=" + media + ", valor=" + valor
+		return "Registro [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", media=" + media + ", valor=" + valor
 				+ ", id_usuario=" + id_usuario + "]";
 	}
-	
 	
 }

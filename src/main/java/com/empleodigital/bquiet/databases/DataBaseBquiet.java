@@ -246,6 +246,13 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return centro;
 	}
 	
+	public static void agregarRegistro(String fecha, String hora, int media, int valor, int id_usuario) {
+		
+		String sql = "INSERT INTO registros (fecha, hora, media, valor, id_usuario) VALUES (?,?,?,?,?)";
+		jdbc.update(sql, new Object[]{fecha, hora, media, valor, id_usuario});
+		
+	}
+	
 
 	
 	
