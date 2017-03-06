@@ -93,6 +93,11 @@
 									name="provinciaCentro"
 									placeholder=" Introduce provincia del centro educativo" />
 							</p>
+							<p>
+								Dirección <input required="required" type="text"
+									name="direccionCentro"
+									placeholder=" Introduce direccion del centro educativo" />
+							</p>
 							
 							<p>
 								Nombre Director/a (SuperUsuario) <input required="required"

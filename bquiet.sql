@@ -26,7 +26,7 @@ CREATE TABLE centros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	nombre VARCHAR(50) NOT NULL,
 	provincia VARCHAR(50) NOT NULL default '',
-	direccion VARCHAR(150) NOT NULL default ''
+	direccion VARCHAR(150) UNIQUE NOT NULL default ''
 
 ) ENGINE = INNODB;
 
@@ -57,3 +57,35 @@ INSERT INTO tipousuario (nombre) VALUES ('superusuario');
 INSERT INTO tipousuario (nombre) VALUES ('usuario');
 
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (1, 'admin', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'super', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'ivan', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'cris', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'sergio', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristian', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiann', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannn', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnn', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnn', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnn', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnnnn', 'admin');
+INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnnnnn', 'admin');
+
+INSERT INTO centros(nombre,provincia,direccion) VALUES ("los llanos","malaga","calle llanos");
+INSERT INTO centros(nombre,provincia,direccion) VALUES ("los flores","malaga","calle flores");
+INSERT INTO centros(nombre,provincia,direccion) VALUES ("los valle","malaga","calle valle");
+INSERT INTO centros(nombre,provincia,direccion) VALUES ("los jazmin","malaga","calle jazmin");
+
+
+
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (2,1);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (3,2);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (4,3);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (5,4);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (6,1);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (7,1);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (8,1);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (9,2);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (10,2);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
+INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
+

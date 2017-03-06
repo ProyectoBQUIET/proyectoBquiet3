@@ -10,19 +10,19 @@
 </head>
 <body>
 
-<h1>Informcacion del Centro ${centro.nombre}</h1>
+<h1>Informacion del Centro ${centro.nombre}</h1>
 
-<p>${centro}</p>
+<p>${centro.nombre}</p>
 
 <h2>Informacion Super Usuario ${superusuario.nombre}</h2>
 
-<p>${superusuario}</p>
+<p>${superusuario.nombre}</p>
 
 <h2>Lista de Usuarios</h2>
 
 <ul>
 	<c:forEach items="${usuarios}" var="user">
-	<li>${user}</li>
+	<li>${user.nombre}</li>
 	</c:forEach>
 </ul>
 

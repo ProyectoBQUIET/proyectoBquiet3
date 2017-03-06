@@ -32,10 +32,11 @@ public class NuevoCentro {
 
 			String centro = request.getParameter("nuevoCentro");
 			String provincia = request.getParameter("provinciaCentro");
+			String direccion = request.getParameter("direccionCentro");
 			String superusuario = request.getParameter("nuevoSuperUsuario");
 			String pass = request.getParameter("passSuperUsuario");
 
-			DataBaseBquiet.agregarCentro(centro, superusuario, pass,provincia);
+			DataBaseBquiet.agregarCentro(centro, superusuario, pass,provincia,direccion);
 			mav.addObject("centros", DataBaseBquiet.listaCentros());		
 		}
 		return mav;

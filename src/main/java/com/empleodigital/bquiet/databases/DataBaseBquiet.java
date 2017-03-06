@@ -123,12 +123,12 @@ public class DataBaseBquiet extends DataBaseGenerica {
 	 *  devuelve true si el centro no existia,
 	 *  devuelve false si el centro si existia
 	 */
-	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass, String provincia) {
+	public static boolean agregarCentro(String nombreCentro, String superusuario, String pass, String provincia, String direccion) {
 		
 		boolean exito = false;
 		
 		try {
-			jdbc.update("INSERT INTO centros (nombre,provincia) VALUES (?,?)", new Object[]{nombreCentro,provincia});
+			jdbc.update("INSERT INTO centros (nombre,provincia,direccion) VALUES (?,?,?)", new Object[]{nombreCentro,provincia,direccion});
 			
 			Centro centro = jdbc.queryForObject("SELECT * FROM centros WHERE nombre=?",
 					new BeanPropertyRowMapper<Centro>(Centro.class),
@@ -212,5 +212,29 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return centro;
 		
 	}
+	
+	
+	public static Centro getCentroByIdSuperUsuario(int id_super){
+		Centro centro = null;
+		try{
+			String sql = "SELECT centros.* FROM usuarios_centros,centros where usuarios_centros.id_usuario=? AND usuarios_centros.id_centro=centros.id";
+			centro = jdbc.queryForObject(
+					sql,
+					new BeanPropertyRowMapper<Centro>(Centro.class),
+					new Object[]{id_super}
+					);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return centro;
+	}
+	
+
+	
+	
+	
+	
+	
 	
 }

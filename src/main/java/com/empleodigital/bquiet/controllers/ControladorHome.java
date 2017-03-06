@@ -37,9 +37,12 @@ public class ControladorHome {
 				mav.setViewName("homeAdministrador");
 				mav.addObject("centros", DataBaseBquiet.listaCentros());
 			}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
-				mav.setViewName("infoCentro");
+				mav.setViewName("homeSuperUsuario");
+				mav.addObject("superusuario",DataBaseBquiet.getUsuario(user, pass));
+				mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
+				mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
 			}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
-				mav.setViewName("infoUsuario");
+				mav.setViewName("homeUsuario");
 			}
 		}else{
 			mav.addObject("mensajeError","Usuario o contraseña incorrecto");
