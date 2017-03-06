@@ -54,7 +54,7 @@
     </div>
     
     <!-- logo -->
-    <img src="resources/img/P1d.png" class="imagen"  >
+    <img src="resources/img/P1d.png" class="imagen" />
 
 		<h2>Listado de centros </h2>
 
