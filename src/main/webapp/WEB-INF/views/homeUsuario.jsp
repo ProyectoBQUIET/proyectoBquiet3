@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Informacion Usuario</h2>
-<h2>Registros sonoros.....</h2>
+<h2>Informacion Usuario ${usuario.nombre}</h2>
 </body>
 </html>

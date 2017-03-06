@@ -22,7 +22,17 @@
 
 <ul>
 	<c:forEach items="${usuarios}" var="user">
+<<<<<<< HEAD
 	<li>${user.nombre}</li>
+=======
+	<li>
+		<p>
+			${user.nombre}
+			<a href='<c:url value='/ver/${user.nombre}'/>'> GESTIONAR</a>
+			<a href="#"> ELIMINAR</a>
+		</p>
+	</li>
+>>>>>>> 93cb7b6ece0122e0f3effb0170478bfbb7222252
 	</c:forEach>
 </ul>
 
