@@ -50,6 +50,14 @@ CREATE TABLE registros (
 	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
 ) ENGINE = INNODB;
 
+CREATE TABLE tokens (
+	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	id_usuario INT(5) NOT NULL,
+	token INT(20) VARCHAR UNIQUE NOT NULL,
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) 
+) ENGINE = INNODB;
+
+
 /**** INSERCION EN TABLAS ****/
 
 INSERT INTO tipousuario (nombre) VALUES ('administrador');
