@@ -64,14 +64,14 @@
 	</div>
 
 	<!-- logo -->
-	<img src="<c:url value='/resources/img/P1d.png' />" class="imagen">
+	<img src="resources/img/P1d.png" class="imagen">
 
 	<!-- Lista usuarios -->
-	<h1>Información del Centro ${centro.nombre}</h1>
+	<h1>Informacion del Centro ${centro.nombre}</h1>
 
 	<p>${centro.nombre}</p>
 
-	<h2>Información Super Usuario ${superusuario.nombre}</h2>
+	<h2>Informacion Super Usuario ${superusuario.nombre}</h2>
 
 	<p>${superusuario.nombre}</p>
 
@@ -90,11 +90,31 @@
 		</c:forEach>
 	</ul>
 
+	<!-- ejemplo form -->
+	<form action="https://www.google.es/" method="get" >
+									<p>
+										Nombre usuario <input required="required" type="text"
+											name="usuario" placeholder=" Introduce tu nombre de usuario"
+											class="form-control text-center">
+									</p>
+									<p>
+										Contraseña <input required="required" type="password"
+											name="password" placeholder="Introduce tu contraseña"
+											class="form-control text-center">
+									</p>
+									<p>
+										Repetir contraseña <input required="required" type="password"
+											name="password2" placeholder="Repite tu contraseña"
+											class="form-control text-center">
+									</p>
+									<input type="submit" value="Registrar"
+										class="active btn btn-danger">
+								</form>
 
 	<!-- MODAL -->
 	<div class="container">
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-			data-target="#myModal">Nuevo Usuario</button>
+			data-target="#myModal">Open Modal</button>
 		<div class="fade modal text-center" id="myModal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -110,15 +130,15 @@
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<h2>Registro de Usuario</h2>
-								<form action="nuevoUsuario" method="get" class="form-group text-center">
+								<form action="https://www.google.es/" method="" class="form-group text-center">
 									<p>
 										Nombre usuario <input required="required" type="text"
-											name="nombreUsuario" placeholder=" Introduce tu nombre de usuario"
+											name="usuario" placeholder=" Introduce tu nombre de usuario"
 											class="form-control text-center">
 									</p>
 									<p>
 										Contraseña <input required="required" type="password"
-											name="passUsuario" placeholder="Introduce tu contraseña"
+											name="password" placeholder="Introduce tu contraseña"
 											class="form-control text-center">
 									</p>
 									<p>
@@ -126,10 +146,8 @@
 											name="password2" placeholder="Repite tu contraseña"
 											class="form-control text-center">
 									</p>
-									
-									<input type="number" name="id_centro" readonly="readonly" value="${centro.id}"  hidden="hidden"/>
 									<input type="submit" value="Registrar"
-										class="active btn btn-danger" >
+										class="active btn btn-danger" data-toggle="button">
 								</form>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"

@@ -47,7 +47,7 @@ public class NuevoUsuario {
 					
 					mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(id_centro));
 					
-					mav.setViewName("administradorCentro");
+					mav.setViewName("homeSuperUsuario");
 					
 				}
 			
