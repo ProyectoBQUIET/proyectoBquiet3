@@ -2,6 +2,7 @@ package com.empleodigital.bquiet.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,10 @@ public class NuevoUsuario {
 	public ModelAndView on() {
 		ModelAndView mav = new ModelAndView("login");
 		
+		
 		if(session.getAttribute("usuarioLogueado") != null)  {
-			
 				Usuario loged = (Usuario) session.getAttribute("usuarioLogueado");
+				
 				
 				int id_centro = Integer.parseInt(request.getParameter("id_centro"));
 				

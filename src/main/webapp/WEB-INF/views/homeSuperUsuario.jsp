@@ -110,7 +110,7 @@
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<h2>Registro de Usuario</h2>
-								<form action="nuevoUsuario" method="get" class="form-group text-center">
+								<form action="/bquiet/nuevoUsuario" method="get" class="form-group text-center">
 									<p>
 										Nombre usuario <input required="required" type="text"
 											name="nombreUsuario" placeholder=" Introduce tu nombre de usuario"

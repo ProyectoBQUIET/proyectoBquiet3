@@ -183,6 +183,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 					);
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		return centro;
 	}
