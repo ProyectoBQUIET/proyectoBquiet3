@@ -90,10 +90,11 @@
 		</c:forEach>
 	</ul>
 
-
+	<br>
+	<br>
 	<!-- MODAL -->
 	<div class="container">
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+		<button type="button" class="btn btn-default" data-toggle="modal"
 			data-target="#myModal">Nuevo Usuario</button>
 		<div class="fade modal text-center" id="myModal">
 			<div class="modal-dialog">
@@ -143,7 +144,8 @@
 			</div>
 		</div>
 	</div>
-
+	<br>
+	<br>
 	<!--  footer -->
 	<footer class="section">
 		<div class="container">

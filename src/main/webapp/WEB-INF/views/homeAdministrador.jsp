@@ -4,7 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- Font Awesome -->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
 <!--  pingendon -->
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -12,25 +22,19 @@
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
 
-<!-- Font Awesome -->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
 
 <!--  librerias Bootstrap-->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
 
 <!-- Local CSS-->
-<link rel="stylesheet" href="<c:url value='/resources/css/css3.css'/> " />
+<link rel="stylesheet" href="<c:url value='/resources/css/css2.css'/> " />
+
 
 <title>Listado de Centros</title>
 <meta charset="UTF-8">
@@ -75,48 +79,78 @@
 
 	<br>
 
-	<!-- Registro formulario -->
-	<div class="section ">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>REGISTRO CENTRO EDUCATIVO</h2>
-					<div class="form-group text-center">
-						<form>
-							<p>
-								Nombre Centro educativo <input required="required" type="text"
-									name="nuevoCentro"
-									placeholder=" Introduce el nombre del centro educativo" />
-							</p>
-							<p>
-								Provincia <input required="required" type="text"
+
+<!-- MODAL -->
+	<div class="container">
+		<button type="button" class="btn btn-default" data-toggle="modal"
+			data-target="#myModal">Nuevo Centro Educativo</button>
+		<div class="fade modal text-center" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Nuevo Centro Educativo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Registro formulario -->
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h2>Registro de Centro Educativo</h2>
+								<form action="nuevocentro" method="get" class="form-group text-center">
+					              <p>Nombre Centro educativo
+					                <input required="required" type="text" name="nuevoCentro" placeholder=" Introduce el nombre del centro educativo"
+					                class="form-control text-center"/>
+					              </p>
+					              <p> Provincia 
+					              <input required="required" type="text"
 									name="provinciaCentro"
-									placeholder=" Introduce provincia del centro educativo" />
+									placeholder=" Introduce provincia del centro educativo"  class="form-control text-center" />
 							</p>
 							<p>
 								Dirección <input required="required" type="text"
 									name="direccionCentro"
-									placeholder=" Introduce direccion del centro educativo" />
+									placeholder=" Introduce direccion del centro educativo"  class="form-control text-center" />
 							</p>
-							
-							<p>
-								Nombre Director/a (SuperUsuario) <input required="required"
-									type="text" name="nuevoSuperUsuario"
-									placeholder="Introduce el nombre del SuperUsuario" />
-							</p>
-							<p>
-								Contraseña <input required="required" type="password"
-									name="passSuperUsuario" placeholder="Introduce tu contraseña" />
-							</p>
-							<button class="active btn btn-danger" data-toggle="button"
-								formaction="nuevocentro" formmethod="post">Registrar
-								Centro</button>
-						</form>
+					              <p> Nombre Director/a (SuperUsuario)
+					                <input required="required" type="text"  name="nuevoSuperUsuario" placeholder="Introduce el nombre del Director/a"
+					                class="form-control text-center"/>
+					              </p>
+					              <p>Contraseña
+					                <input required="required" type="password" name="passSuperUsuario" placeholder="Introduce tu contraseña"
+					                class="form-control text-center">
+					              </p>
+					              <p>Repetir contraseña
+					                <input required="required" type="password" name="password2"
+					                placeholder="Repite tu contraseña" class="form-control text-center">
+					              </p>
+					              <input type="submit" value="Registrar" class="active btn btn-danger">
+					            </form>
+					
+					
+					
+								</form>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Cancelar</button>
+
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+
+
+
+
+
 
 	<!--  footer -->
 
