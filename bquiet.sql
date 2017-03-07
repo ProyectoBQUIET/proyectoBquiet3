@@ -42,8 +42,7 @@ CREATE TABLE usuarios_centros (
 
 CREATE TABLE registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	fecha DATE NOT NULL,
-	hora TIME NOT NULL,
+	fecha DATETIME UNIQUE NOT NULL, 
 	media INT(5) NOT NULL,
 	valor INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
@@ -99,3 +98,4 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (10,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
 
+INSERT INTO registros(fecha,media,valor,id_usuario) VALUES ("2017-01-01 00:00:00",40,80,6);

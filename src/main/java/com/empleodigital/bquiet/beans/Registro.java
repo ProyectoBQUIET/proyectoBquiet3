@@ -4,18 +4,15 @@ public class Registro {
 	
 	private int id;
 	private String fecha;
-	private String hora;
 	private int media;
 	private int valor;
 	private int id_usuario;
 	
 	public Registro() {}
 
-	public Registro(int id, String fecha, String hora, int media, int valor, int id_usuario) {
-		super();
+	public Registro(int id, String fecha, int media, int valor, int id_usuario) {
 		this.id = id;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.media = media;
 		this.valor = valor;
 		this.id_usuario = id_usuario;
@@ -35,14 +32,6 @@ public class Registro {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
-	}
-
-	public String getHora() {
-		return hora;
-	}
-
-	public void setHora(String hora) {
-		this.hora = hora;
 	}
 
 	public int getMedia() {
@@ -71,8 +60,9 @@ public class Registro {
 
 	@Override
 	public String toString() {
-		return "Registro [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", media=" + media + ", valor=" + valor
-				+ ", id_usuario=" + id_usuario + "]";
+		return "Registro [id=" + id + ", fecha=" + fecha + ", media=" + media + ", valor=" + valor + ", id_usuario="
+				+ id_usuario + "]";
 	}
+	
 	
 }
