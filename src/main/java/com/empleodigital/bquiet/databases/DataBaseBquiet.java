@@ -246,17 +246,68 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return centro;
 	}
 	
-	public static void agregarRegistro(String fecha, String hora, int media, int valor, int id_usuario) {
-		
-		String sql = "INSERT INTO registros (fecha, hora, media, valor, id_usuario) VALUES (?,?,?,?,?)";
-		jdbc.update(sql, new Object[]{fecha, hora, media, valor, id_usuario});
-		
-	}
-	
 	public static void borrarCentro(String nombre) {
 		
 		String sql = "DELETE FROM centros WHERE nombre=?";
 		jdbc.update(sql, new Object[]{nombre});
+		
+	}
+	
+	public static void agregarRegistro(String token, String fecha, String hora, int media, int valor) {
+		
+		try {
+			
+			Usuario user = getUsuarioByToken(token);
+			int id_usuario = user.getId();
+			String sql = "INSERT INTO registros (fecha, hora, media, valor, id_usuario) VALUES (?,?,?,?,?)";
+			jdbc.update(sql, new Object[]{fecha, hora, media, valor, id_usuario});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static Usuario getUsuarioByToken(String token) {
+		
+		Usuario user = null;
+		try {
+			
+			String sql = "SELECT usuarios.* FROM tokens, usuarios WHERE token=? AND usuarios.id=tokens.id_usuario";
+			
+			user = jdbc.queryForObject(sql,
+					new BeanPropertyRowMapper<Usuario>(Usuario.class),
+					new Object[]{token});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
+	public static void eliminarTokenByUserID(int id_usuario) {
+		
+		try {
+			
+			String sql = "DELETE FROM tokens WHERE id_usuario=?";
+			jdbc.update(sql, new Object[]{id_usuario});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void registrarToken(int id_usuario, String token) {
+		
+		try {
+			
+			String sql = "INSERT INTO tokens (id_usuario, token) VALUES (?, ?)";
+			jdbc.update(sql, new Object[]{id_usuario, token});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

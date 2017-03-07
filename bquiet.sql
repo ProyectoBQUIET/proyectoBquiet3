@@ -48,13 +48,15 @@ CREATE TABLE registros (
 	valor INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
+	
 ) ENGINE = INNODB;
 
 CREATE TABLE tokens (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	id_usuario INT(5) NOT NULL,
-	token INT(20) VARCHAR UNIQUE NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) 
+	id_usuario INT(5) UNIQUE NOT NULL,
+	token VARCHAR(36) UNIQUE NOT NULL,
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
+	
 ) ENGINE = INNODB;
 
 

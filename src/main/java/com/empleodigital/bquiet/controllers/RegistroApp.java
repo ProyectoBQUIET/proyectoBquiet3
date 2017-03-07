@@ -20,18 +20,18 @@ public class RegistroApp {
 		
 		try {
 			
+			String token = request.getParameter("token");
+			
 			String fecha = request.getParameter("fecha");
 			String hora = request.getParameter("hora");
 			int media = Integer.parseInt(request.getParameter("media"));
 			int valor = Integer.parseInt(request.getParameter("valor"));
-			int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
 			
-			DataBaseBquiet.agregarRegistro(fecha, hora, media, valor, id_usuario);
+			DataBaseBquiet.agregarRegistro(token, fecha, hora, media, valor);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 		return null;
 	}

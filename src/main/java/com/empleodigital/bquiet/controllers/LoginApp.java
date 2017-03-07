@@ -1,5 +1,7 @@
 package com.empleodigital.bquiet.controllers;
 
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +19,29 @@ public class LoginApp {
 	HttpServletRequest request;
 	
 	@RequestMapping(value="/applogin")
-	public @ResponseBody Usuario on() {
-		Usuario user = null;
+	public @ResponseBody String on() {
 		
+		String token = null;
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("pass");
 		
 		if(nombre!=null && pass!=null) {
 			
-			user = DataBaseBquiet.getUsuario(nombre, pass);
+			Usuario user = DataBaseBquiet.getUsuario(nombre, pass);
+			
+			if(user!=null) {
+				
+				token = UUID.randomUUID().toString();
+				
+				DataBaseBquiet.eliminarTokenByUserID(user.getId());
+				
+				DataBaseBquiet.registrarToken(user.getId(), token);
+				
+			}
 			
 		}
 		
-		return user;
+		return token;
 	}
 
 }
