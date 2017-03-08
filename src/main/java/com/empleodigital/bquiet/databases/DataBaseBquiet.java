@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 
 public class DataBaseBquiet extends DataBaseGenerica {
+	
 	private static JdbcTemplate jdbc = new JdbcTemplate(Conector.getDataSource());
 	
 	/**
@@ -254,19 +256,24 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
-	public static void agregarRegistro(String token, String fecha, String hora, int media, int valor) {
+	public static void agregarRegistro(int media, int id_usuario) {
 		
-		try {
-			
-			Usuario user = getUsuarioByToken(token);
-			int id_usuario = user.getId();
-			String sql = "INSERT INTO registros (fecha, hora, media, valor, id_usuario) VALUES (?,?,?,?,?)";
-			jdbc.update(sql, new Object[]{fecha, hora, media, valor, id_usuario});
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String sql = "INSERT INTO registros (media, id_usuario) VALUES (?, ?)";
+		jdbc.update(sql, new Object[]{media, id_usuario});
 		
+	}
+	
+	public static void agregarListaRegistro(int id_registro, int fecha, int valor) {
+		
+		String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
+		jdbc.update(sql, new Object[]{id_registro, fecha, valor});
+		
+	}
+	
+	public static Integer getIdUltimoRegistro() {
+		Integer x = jdbc.queryForObject("select last_insert_id()", Integer.class);
+		System.out.println(x);
+		return x;
 	}
 	
 	public static Usuario getUsuarioByToken(String token) {

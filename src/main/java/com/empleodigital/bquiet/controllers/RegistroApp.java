@@ -27,7 +27,7 @@ public class RegistroApp {
 			int media = Integer.parseInt(request.getParameter("media"));
 			int valor = Integer.parseInt(request.getParameter("valor"));
 			
-			DataBaseBquiet.agregarRegistro(token, fecha, hora, media, valor);
+			//DataBaseBquiet.agregarRegistro(token, fecha, hora, media, valor);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

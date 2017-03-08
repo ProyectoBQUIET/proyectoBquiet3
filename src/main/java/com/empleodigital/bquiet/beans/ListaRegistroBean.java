@@ -1,28 +1,28 @@
 package com.empleodigital.bquiet.beans;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListaRegistroBean {
 	
-	private ArrayList<RegistroBean> registros;
+	private RegistroBean[] registros;
+	
+	public ListaRegistroBean() {}
 
-	public ListaRegistroBean(ArrayList<RegistroBean> registros) {
+	public ListaRegistroBean(RegistroBean[] registros) {
 		this.registros = registros;
 	}
 
-	public ArrayList<RegistroBean> getRegistros() {
+	public RegistroBean[] getRegistros() {
 		return registros;
 	}
 
-	public void setRegistros(ArrayList<RegistroBean> registros) {
+	public void setRegistros(RegistroBean[] registros) {
 		this.registros = registros;
 	}
 
 	@Override
 	public String toString() {
-		return "ListaRegistroBean [registros=" + registros + "]";
+		return "ListaRegistroBean [registros=" + Arrays.toString(registros) + "]";
 	}
-
-
 	
 }

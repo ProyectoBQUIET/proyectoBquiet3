@@ -42,11 +42,18 @@ CREATE TABLE usuarios_centros (
 
 CREATE TABLE registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	fecha DATETIME UNIQUE NOT NULL, 
 	media INT(5) NOT NULL,
-	valor INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
+	
+) ENGINE = INNODB;
+
+CREATE TABLE lista_registros (
+	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	id_registro INT(5) NOT NULL,
+	fecha INT(20) UNIQUE NOT NULL, 
+	valor INT(5) NOT NULL,
+	FOREIGN KEY (id_registro) REFERENCES registros (id) ON DELETE CASCADE
 	
 ) ENGINE = INNODB;
 
@@ -97,5 +104,3 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (9,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (10,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
-
-INSERT INTO registros(fecha,media,valor,id_usuario) VALUES ("2017-01-01 00:00:00",40,80,6);
