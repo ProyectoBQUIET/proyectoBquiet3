@@ -1,10 +1,16 @@
 package com.empleodigital.bquiet.databases;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
@@ -256,10 +262,25 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
-	public static void agregarRegistro(int media, int id_usuario) {
+	public static int agregarRegistro(final int media, final int id_usuario) {
 		
-		String sql = "INSERT INTO registros (media, id_usuario) VALUES (?, ?)";
-		jdbc.update(sql, new Object[]{media, id_usuario});
+		//String sql = "INSERT INTO registros (media, id_usuario) VALUES (?, ?)";
+		//jdbc.update(sql, new Object[]{media, id_usuario});
+		
+		KeyHolder holder = new GeneratedKeyHolder();
+
+		jdbc.update(new PreparedStatementCreator() {           
+
+		                @Override
+		                public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+		                    PreparedStatement ps = connection.prepareStatement("INSERT INTO registros (media, id_usuario) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+		                    ps.setInt(1, media);
+		                    ps.setInt(2, id_usuario);
+		                    return ps;
+		                }
+		            }, holder);
+
+		return holder.getKey().intValue();
 		
 	}
 	
@@ -268,12 +289,6 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
 		jdbc.update(sql, new Object[]{id_registro, fecha, valor});
 		
-	}
-	
-	public static Integer getIdUltimoRegistro() {
-		Integer x = jdbc.queryForObject("select last_insert_id()", Integer.class);
-		System.out.println(x);
-		return x;
 	}
 	
 	public static Usuario getUsuarioByToken(String token) {

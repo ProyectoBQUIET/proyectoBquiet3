@@ -42,9 +42,9 @@ public class RegistroController {
 				
 				ListaRegistroBean lista = new ObjectMapper().readValue(json, ListaRegistroBean.class);
 				
-				DataBaseBquiet.agregarRegistro(media, user.getId());
+				int id_registro = DataBaseBquiet.agregarRegistro(media, user.getId());
 				
-				int id_registro = DataBaseBquiet.getIdUltimoRegistro();
+				//int id_registro = DataBaseBquiet.getIdUltimoRegistro();
 				
 				for(RegistroBean reg : lista.getRegistros()) {
 					DataBaseBquiet.agregarListaRegistro(id_registro, reg.getDate(), reg.getValue());
