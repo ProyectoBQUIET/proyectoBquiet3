@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.empleodigital.bquiet.beans.ListaRegistroBean;
 import com.empleodigital.bquiet.beans.RegistroBean;
+import com.empleodigital.bquiet.beans.Usuario;
+import com.empleodigital.bquiet.databases.DataBaseBquiet;
 
 @Controller
 public class RegistroController {
@@ -27,13 +30,27 @@ public class RegistroController {
 		
 		try {
 			
+			String token = request.getParameter("token");
 			
-			String json = request.getParameter("json");
+			Usuario user = DataBaseBquiet.getUsuarioByToken(token);
 			
-			RegistroBean registro = new ObjectMapper().readValue(json, RegistroBean.class);
-			
-			System.out.println(registro);
-			
+			if(user!=null) {
+				
+				int media = Integer.parseInt(request.getParameter("media"));
+				
+				String json = request.getParameter("json");
+				
+				ListaRegistroBean lista = new ObjectMapper().readValue(json, ListaRegistroBean.class);
+				
+				DataBaseBquiet.agregarRegistro(media, user.getId());
+				
+				int id_registro = DataBaseBquiet.getIdUltimoRegistro();
+				
+				for(RegistroBean reg : lista.getRegistros()) {
+					DataBaseBquiet.agregarListaRegistro(id_registro, reg.getDate(), reg.getValue());
+				}
+				
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

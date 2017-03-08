@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,7 +9,9 @@
 <body>
 
 	<form action="registro" method="post">
-		<input type="text" name="json"/>
+		<input type="text" name="json" placeholder="Json"/>
+		<input type="text" name="token" placeholder="Token"/>
+		<input type="number" name="media" placeholder="Media"/>
 		<input type="submit" value="ENVIAR">
 	</form>
 
