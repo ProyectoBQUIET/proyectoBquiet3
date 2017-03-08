@@ -23,7 +23,7 @@ public class ControladorHome {
 	@RequestMapping("/")
 	public String inicio(){
 		
-		return "login";
+		return "grafica";
 	}
 	
 	
