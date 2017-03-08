@@ -104,3 +104,11 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (9,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (10,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
+
+
+INSERT INTO registros(media,id_usuario) VALUES (60,6);
+
+
+
+
+
