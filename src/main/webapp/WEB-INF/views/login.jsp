@@ -71,7 +71,7 @@
 	<!--  login formu-->
 	<form id="loginform" method="post" action="login">
 		<c:if test="${not empty mensajeError}">
-			<h3 style="color: orange">${mensajeError}</h3>
+			<h3 style="color: #ffff99">${mensajeError}</h3>
 		</c:if>
 		<input type="text" class="input" placeholder="Usuario" name="user" />
 		<input type="password" class="input" placeholder="Contraseña"
