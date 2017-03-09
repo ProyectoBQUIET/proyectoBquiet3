@@ -11,6 +11,7 @@
 	<form action="registro" method="post">
 		<input type="text" name="json" placeholder="Json"/>
 		<input type="text" name="token" placeholder="Token"/>
+		<input type="text" name="fecha" placeholder="Fecha"/>
 		<input type="number" name="media" placeholder="Media"/>
 		<input type="submit" value="ENVIAR">
 	</form>

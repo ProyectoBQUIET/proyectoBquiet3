@@ -15,6 +15,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
+import com.empleodigital.bquiet.util.UnixTime;
 
 public class DataBaseBquiet extends DataBaseGenerica {
 	
@@ -262,10 +263,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
-	public static int agregarRegistro(final int media, final int id_usuario) {
-		
-		//String sql = "INSERT INTO registros (media, id_usuario) VALUES (?, ?)";
-		//jdbc.update(sql, new Object[]{media, id_usuario});
+	public static int agregarRegistro(final int media, final int id_usuario, final long fecha) {
 		
 		KeyHolder holder = new GeneratedKeyHolder();
 
@@ -273,9 +271,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 		                @Override
 		                public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-		                    PreparedStatement ps = connection.prepareStatement("INSERT INTO registros (media, id_usuario) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+		                    PreparedStatement ps = connection.prepareStatement("INSERT INTO registros (media, id_usuario, fecha) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 		                    ps.setInt(1, media);
 		                    ps.setInt(2, id_usuario);
+		                    ps.setString(3, UnixTime.getFecha(fecha));
 		                    return ps;
 		                }
 		            }, holder);
@@ -284,10 +283,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
-	public static void agregarListaRegistro(int id_registro, int fecha, int valor) {
+	public static void agregarListaRegistro(int id_registro, long fecha, int valor) {
 		
 		String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
-		jdbc.update(sql, new Object[]{id_registro, fecha, valor});
+		jdbc.update(sql, new Object[]{id_registro, UnixTime.getHora(fecha), valor});
 		
 	}
 	

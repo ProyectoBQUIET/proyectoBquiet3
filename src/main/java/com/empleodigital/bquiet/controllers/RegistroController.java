@@ -38,16 +38,18 @@ public class RegistroController {
 				
 				int media = Integer.parseInt(request.getParameter("media"));
 				
+				long fecha = Long.parseLong(request.getParameter("fecha"));
+				
 				String json = request.getParameter("json");
 				
 				ListaRegistroBean lista = new ObjectMapper().readValue(json, ListaRegistroBean.class);
 				
-				int id_registro = DataBaseBquiet.agregarRegistro(media, user.getId());
+				int id_registro = DataBaseBquiet.agregarRegistro(media, user.getId(), fecha);
 				
 				//int id_registro = DataBaseBquiet.getIdUltimoRegistro();
 				
 				for(RegistroBean reg : lista.getRegistros()) {
-					DataBaseBquiet.agregarListaRegistro(id_registro, reg.getDate(), reg.getValue());
+					DataBaseBquiet.agregarListaRegistro(id_registro, reg.getFecha(), reg.getValor());
 				}
 				
 			}

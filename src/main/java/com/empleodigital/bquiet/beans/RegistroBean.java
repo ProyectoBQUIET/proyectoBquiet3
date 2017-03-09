@@ -3,17 +3,10 @@ package com.empleodigital.bquiet.beans;
 public class RegistroBean {
 	private int id;
 	private int id_registro;
-	private int date;
-	private int value;
+	private long fecha;
+	private int valor;
 	
 	public RegistroBean() {}
-
-	public RegistroBean(int id, int id_registro, int date, int value) {
-		this.id = id;
-		this.id_registro = id_registro;
-		this.date = date;
-		this.value = value;
-	}
 
 	public int getId() {
 		return id;
@@ -31,26 +24,26 @@ public class RegistroBean {
 		this.id_registro = id_registro;
 	}
 
-	public int getDate() {
-		return date;
+	public long getFecha() {
+		return fecha;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public void setFecha(long fecha) {
+		this.fecha = fecha;
 	}
 
-	public int getValue() {
-		return value;
+	public int getValor() {
+		return valor;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
 	@Override
 	public String toString() {
-		return "RegistroBean [id=" + id + ", id_registro=" + id_registro + ", date=" + date + ", value=" + value + "]";
+		return "RegistroBean [id=" + id + ", id_registro=" + id_registro + ", fecha=" + fecha + ", valor=" + valor
+				+ "]";
 	}
-	
 	
 }

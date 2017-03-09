@@ -55,7 +55,7 @@
     </div>
 
 <!-- logo -->
-	<img src="resources/img/P1d.png" class="imagen"  >
+	<img src='<c:url value="resources/img/p1d.png"/>' class="imagen"/>
     
     <!--  información 	usuario-->
     <div class="section">
@@ -72,6 +72,11 @@
         </div>
       </div>
     </div>
+    
+    <form action="" method="post">
+    	<input type="date" name="date" />
+    	<input type="submit">
+    </form>
     
 
 	

@@ -44,6 +44,7 @@ CREATE TABLE registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	media INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
+	fecha DATE NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
 	
 ) ENGINE = INNODB;
@@ -51,8 +52,8 @@ CREATE TABLE registros (
 CREATE TABLE lista_registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_registro INT(5) NOT NULL,
-	fecha INT(20) UNIQUE NOT NULL, 
 	valor INT(5) NOT NULL,
+	fecha TIME NOT NULL,
 	FOREIGN KEY (id_registro) REFERENCES registros (id) ON DELETE CASCADE
 	
 ) ENGINE = INNODB;

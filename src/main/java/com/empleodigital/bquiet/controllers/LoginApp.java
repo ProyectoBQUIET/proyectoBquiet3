@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.empleodigital.bquiet.beans.TokenBean;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.databases.DataBaseBquiet;
 
@@ -20,7 +20,7 @@ public class LoginApp {
 	HttpServletRequest request;
 	
 	@RequestMapping(value="/applogin")
-	public @ResponseBody String on() {
+	public @ResponseBody TokenBean on() {
 		
 		String token = null;
 		String nombre = request.getParameter("nombre");
@@ -38,11 +38,13 @@ public class LoginApp {
 				
 				DataBaseBquiet.registrarToken(user.getId(), token);
 				
+				return new TokenBean(token);
+				
 			}
 			
 		}
 		
-		return token;
+		return null;
 	}
 
 }
