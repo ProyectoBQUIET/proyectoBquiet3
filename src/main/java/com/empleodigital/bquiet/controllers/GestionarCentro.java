@@ -24,7 +24,7 @@ public class GestionarCentro {
 		ModelAndView mav = new ModelAndView("login");
 		
 		if(session.getAttribute("usuarioLogueado") != null && 
-				((Usuario)session.getAttribute("usuarioLogueado")).getId() == TipoUsuario.ADMINISTRADOR) {
+				((Usuario)session.getAttribute("usuarioLogueado")).getId_tipousuario() == TipoUsuario.ADMINISTRADOR) {
 			
 			Centro centro = DataBaseBquiet.getCentro(nombrecentro);
 			

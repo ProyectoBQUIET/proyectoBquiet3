@@ -36,7 +36,7 @@ public class ControladorHome {
 		
 		if(user!=null && pass!=null) {
 			
-			Usuario usuario=DataBaseBquiet.getUsuario(user, pass);
+			Usuario usuario = DataBaseBquiet.getUsuario(user, pass);
 			
 			if(usuario!=null){
 				session.setAttribute("usuarioLogueado", usuario);

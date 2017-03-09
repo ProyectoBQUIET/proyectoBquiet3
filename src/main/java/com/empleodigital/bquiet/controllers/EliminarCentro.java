@@ -24,7 +24,7 @@ public class EliminarCentro {
 		ModelAndView mav = new ModelAndView("login");
 		
 		if(session.getAttribute("usuarioLogueado") != null && 
-				((Usuario)session.getAttribute("usuarioLogueado")).getId() == TipoUsuario.ADMINISTRADOR) {
+				((Usuario)session.getAttribute("usuarioLogueado")).getId_tipousuario() == TipoUsuario.ADMINISTRADOR) {
 			
 			DataBaseBquiet.borrarCentro(centro);
 			

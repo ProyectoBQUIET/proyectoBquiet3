@@ -1,5 +1,6 @@
 package com.empleodigital.bquiet.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class GestionarUsuario {
 	
 	@Autowired
 	HttpSession session;
+	@Autowired
+	HttpServletRequest request;
 	
 	@RequestMapping(value="/ver/{usuario}")
 	public ModelAndView on(@PathVariable("usuario") String usuario) {
@@ -24,14 +27,30 @@ public class GestionarUsuario {
 		ModelAndView mav = new ModelAndView("login");
 		
 		if(session.getAttribute("usuarioLogueado") != null && 
-				((Usuario)session.getAttribute("usuarioLogueado")).getId() == TipoUsuario.ADMINISTRADOR) {
+				((Usuario)session.getAttribute("usuarioLogueado")).getId_tipousuario() == TipoUsuario.ADMINISTRADOR) {
 			
 			mav.setViewName("homeUsuario");
 			
 			Usuario user = DataBaseBquiet.getUsuario(usuario);
 			
 			if(user!=null) {
+				
 				mav.addObject("usuario", user);
+				
+				String fecha = request.getParameter("fecha");
+				
+				if(fecha!=null) {
+					
+					fecha = fecha.replace("-", "/");
+					
+					//DataBaseBquiet.obtenerEstadisticas(user.getId(), fecha);
+					
+					mav.addObject("json", DataBaseBquiet.obtenerEstadisticas(user.getId(), fecha));
+					
+					//System.out.println("fecha: " + fecha);
+					
+				}
+				
 			}
 			
 		}

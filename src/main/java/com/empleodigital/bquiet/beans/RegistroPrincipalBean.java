@@ -5,7 +5,7 @@ public class RegistroPrincipalBean {
 	private int id;
 	private int id_usuario;
 	private int media;
-	private int fecha;
+	private String fecha;
 	
 	public RegistroPrincipalBean() {}
 
@@ -33,11 +33,11 @@ public class RegistroPrincipalBean {
 		this.media = media;
 	}
 
-	public int getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(int fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

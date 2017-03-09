@@ -6,13 +6,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.empleodigital.bquiet.beans.Centro;
+import com.empleodigital.bquiet.beans.RegistroBean;
+import com.empleodigital.bquiet.beans.RegistroPrincipalBean;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.util.UnixTime;
@@ -283,10 +287,10 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		
 	}
 	
-	public static void agregarListaRegistro(int id_registro, long fecha, int valor) {
+	public static void agregarListaRegistro(int id_registro, String fecha, int valor) {
 		
 		String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
-		jdbc.update(sql, new Object[]{id_registro, UnixTime.getHora(fecha), valor});
+		jdbc.update(sql, new Object[]{id_registro, UnixTime.getHora(Long.parseLong(fecha)), valor});
 		
 	}
 	
@@ -331,6 +335,49 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static @ResponseBody ArrayList<RegistroBean> obtenerEstadisticas(int id_usuario, String fecha) {
+		
+		ArrayList<RegistroBean> registros = new ArrayList<RegistroBean>();
+		
+		try {
+			
+			String sql = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
+			RegistroPrincipalBean reg = jdbc.queryForObject(sql,
+					new BeanPropertyRowMapper<RegistroPrincipalBean>(RegistroPrincipalBean.class),
+					new Object[]{id_usuario, fecha});
+			
+			int id_registro = reg.getId();
+			String sql2 = "SELECT * FROM lista_registros WHERE id_registro=?";
+			registros = (ArrayList<RegistroBean>) jdbc.query(sql2,
+					new BeanPropertyRowMapper<RegistroBean>(RegistroBean.class),
+					new Object[]{id_registro});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return registros;
+	}
+	
+	public static int existeRegistro(int id_usuario, String fecha) {
+		
+		int num = 0;
+		
+		try {
+			
+			String sql = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
+			RegistroPrincipalBean reg = jdbc.queryForObject(sql,
+					new BeanPropertyRowMapper<RegistroPrincipalBean>(RegistroPrincipalBean.class),
+					new Object[]{id_usuario, fecha});
+			
+			num = reg.getId();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return num;
 	}
 	
 

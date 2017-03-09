@@ -13,6 +13,7 @@ import com.empleodigital.bquiet.beans.ListaRegistroBean;
 import com.empleodigital.bquiet.beans.RegistroBean;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.databases.DataBaseBquiet;
+import com.empleodigital.bquiet.util.UnixTime;
 
 @Controller
 public class RegistroController {
@@ -44,9 +45,11 @@ public class RegistroController {
 				
 				ListaRegistroBean lista = new ObjectMapper().readValue(json, ListaRegistroBean.class);
 				
-				int id_registro = DataBaseBquiet.agregarRegistro(media, user.getId(), fecha);
+				int id_registro = DataBaseBquiet.existeRegistro(user.getId(), UnixTime.getFecha(fecha));
 				
-				//int id_registro = DataBaseBquiet.getIdUltimoRegistro();
+				if(!(id_registro >0)) {
+					id_registro = DataBaseBquiet.agregarRegistro(media, user.getId(), fecha);
+				}
 				
 				for(RegistroBean reg : lista.getRegistros()) {
 					DataBaseBquiet.agregarListaRegistro(id_registro, reg.getFecha(), reg.getValor());

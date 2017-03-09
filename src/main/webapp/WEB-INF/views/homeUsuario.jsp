@@ -92,13 +92,16 @@
       </div>
     </div>
 
+	<!-- FORMULARIO ESTADISTICAS -->
     
-    <form action="" method="post">
-    	<input type="date" name="date" />
-    	<input type="submit">
-    </form>
-    
-
+	<form action='<c:url value="/ver/${usuario.nombre}"/>'>
+		
+		<input type="date" name="fecha" />
+		<input type="submit" value="Enviar..">
+		
+	</form>
+	
+	<textarea hidden="hidden" id="json">${json}</textarea>
 	
 
 	

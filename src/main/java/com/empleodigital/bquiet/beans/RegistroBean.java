@@ -3,7 +3,7 @@ package com.empleodigital.bquiet.beans;
 public class RegistroBean {
 	private int id;
 	private int id_registro;
-	private long fecha;
+	private String fecha;
 	private int valor;
 	
 	public RegistroBean() {}
@@ -24,11 +24,11 @@ public class RegistroBean {
 		this.id_registro = id_registro;
 	}
 
-	public long getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(long fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
