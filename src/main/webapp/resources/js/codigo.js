@@ -25,36 +25,33 @@ function cargar(){
 			json =respuesta;
 			alert(respuesta);
 			
+			json ='{ "registros" : [{"estado":"Alto","tiempo":10},{"estado":"Normal","tiempo":50},{"estado":"bajo","tiempo":5}]}';
+			
+			alert(json);
 			var obj = JSON.parse(json);
 		
 			var array = new Array();
-			array[0] = new Array("hora","db");
+			array[0] = new Array("estado","tiempo");
 			
 			for (var i=0; i<obj.registros.length; i++){
-				array[i+1] = new Array(obj.registros[i].date,obj.registros[i].value);
+				array[i+1] = new Array(obj.registros[i].estado,obj.registros[i].tiempo);
 			}
 			
-			   google.charts.load('current', {'packages':['corechart']});
-			      google.charts.setOnLoadCallback(drawChart);
+			google.charts.load('current', {'packages':['corechart']});
+		      google.charts.setOnLoadCallback(drawChart);
 
-			     
-			      
-			      function drawChart() {
-			    	  alert(array);
-			        var data = google.visualization.arrayToDataTable(array);
+		      function drawChart() {
 
-			        var options = {
-			          title: 'The decline of \'The 39 Steps\'',
-			          vAxis: {title: 'Accumulated Rating'},
-			          isStacked: true
-			        };
+		        var data = google.visualization.arrayToDataTable(array);
 
-			        var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+		        var options = {
+		          title: 'My Daily Activities'
+		        };
 
-			        chart.draw(data, options);
-			      }
-			      
-			
+		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+		        chart.draw(data, options);
+		      }
 		}		
 	};
 	

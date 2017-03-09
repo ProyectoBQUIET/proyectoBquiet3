@@ -6,7 +6,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Home Usuario</title>
-	
+	<!--grafica-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    <script type="text/javascript" src="resources/js/codigo.js"></script>
 	<!--  pingendon -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
     rel="stylesheet" type="text/css">
@@ -24,7 +26,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<!-- Local CSS-->
-	<link rel="stylesheet" href="<c:url value='/resources/css/css2.css'/> "/>  
+	<link rel="stylesheet" href="<c:url value='/resources/css/cssusuario.css'/> "/>  
 	
 </head>
 <body>
@@ -55,7 +57,27 @@
     </div>
 
 <!-- logo -->
+<<<<<<< Updated upstream
 	<img src='<c:url value="resources/img/p1d.png"/>' class="imagen"/>
+=======
+
+	
+    <img src="<c:url value='/resources/img/P1d.png' />" class="imagen">
+     <br>
+    <form action="fechaUsuario" method="get" >
+	
+	<div class="fecha">
+	  <span>Fecha: </span> <input type="date" name="fecha"> 
+	  <input type="submit" value="Ver estadísticas">
+	</div>
+	</form>
+
+	<br>
+    <p>
+		<button id="btCargar">Cargar grafica</button>
+	</p>
+	<div id="piechart" style="width: 900px; height: 500px"></div> 
+>>>>>>> Stashed changes
     
     <!--  información 	usuario-->
     <div class="section">
@@ -72,6 +94,7 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
     
     <form action="" method="post">
     	<input type="date" name="date" />
@@ -80,6 +103,10 @@
     
 
 	
+=======
+   
+   
+>>>>>>> Stashed changes
 	
 <!--  footer -->
 

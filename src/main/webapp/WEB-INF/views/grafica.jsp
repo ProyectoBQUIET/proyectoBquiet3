@@ -12,6 +12,6 @@
 	<p>
 		<button id="btCargar">Cargar grafica</button>
 	</p>
-	<div id="chart_div" style="width: 900px; height: 500px"></div> 
+	<div id="piechart" style="width: 900px; height: 500px"></div> 
 	 </body>
 </html>
