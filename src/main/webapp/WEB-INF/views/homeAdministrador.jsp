@@ -51,12 +51,13 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>bQuiet</span></a>
+				<a class="navbar-brand" href="#"> <span><img
+				alt="ROBONAUTAS" src="resources/img/P1d.png" height="35"
+				width="auto" title="Robonautas" /> INICIO</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Inicio</a></li>
-					<li><a href="#">Contacta</a></li>
+					<li><a href="#">LOGOUT</a></li>
 				</ul>
 			</div>
 		</div>
@@ -158,10 +159,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6">
-					<h1>Footer header</h1>
-					<p>
-						--información extra de contacto /dirección <br>
-					</p>
+					<h2>R O B O N A U T A S</h2>
+            		<p>TECNOLOGÍA  Y ROBÓTICA EDUCATIVA</p>
+            		<p> 951 082 332 | 633 100 130 | info@robonautas.com
 				</div>
 				<div class="col-sm-6">
 					<p class="text-info text-right">
@@ -169,7 +169,6 @@
 					</p>
 					<div class="row">
 						<div class="col-md-12 hidden-xs text-right">
-							<a href=><i class="fa fa-3x fa-fw fa-instagram text-warning"></i></a>
 							<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
 							<a href="https://www.facebook.com/losrobonautas/"><i
 								class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
