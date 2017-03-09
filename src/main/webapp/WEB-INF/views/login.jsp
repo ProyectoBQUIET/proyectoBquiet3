@@ -73,8 +73,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Footer header</h1>
-            <p> --información extra de contacto /dirección
+            <h2>R O B O N A U T A S</h2>
+            <p>TECNOLOGÍA  Y ROBÓTICA EDUCATIVA</p>
+            <p> 951 082 332 | 633 100 130 | info@robonautas.com
               <br></p>
           </div>
           <div class="col-sm-6">
@@ -84,7 +85,6 @@
             </p>
             <div class="row">
               <div class="col-md-12 hidden-xs text-right">
-                <a href=><i class="fa fa-3x fa-fw fa-instagram text-warning"></i></a>
                 <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
                 <a href="https://www.facebook.com/losrobonautas/"><i class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
               </div>
