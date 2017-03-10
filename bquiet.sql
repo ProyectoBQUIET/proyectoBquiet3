@@ -73,7 +73,7 @@ INSERT INTO tipousuario (nombre) VALUES ('administrador');
 INSERT INTO tipousuario (nombre) VALUES ('superusuario');
 INSERT INTO tipousuario (nombre) VALUES ('usuario');
 
-INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (1, 'admin', 'admin');
+INSERT INTO usuarios (id, id_tipousuario, nombre, pass) VALUES (1, 1, 'admin', 'admin');
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'super', 'admin');
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'ivan', 'admin');
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (2, 'cris', 'admin');
@@ -107,7 +107,13 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
 
 
-INSERT INTO registros(media,id_usuario) VALUES (60,6);
+INSERT INTO registros(id, media, id_usuario, fecha) VALUES (1, 70, 1, '2017/03/10');
+
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:05:00', 80);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:10:00', 80);
+
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:15:00', 60);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:20:00', 60);
 
 
 

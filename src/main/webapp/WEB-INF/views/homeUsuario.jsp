@@ -60,15 +60,6 @@
 
 	
     <img src="<c:url value='/resources/img/P1d.png' />" class="imagen">
-     <br>
-    <form action="fechaUsuario" method="get" >
-	
-	<div class="fecha">
-	  <span>Fecha: </span> <input type="date" name="fecha"> 
-	  <input type="submit" value="Ver estadísticas">
-	</div>
-	</form>
-
 	<br>
     <p>
 		<button id="btCargar">Cargar grafica</button>
@@ -93,15 +84,17 @@
     </div>
 
 	<!-- FORMULARIO ESTADISTICAS -->
-    
-	<form action='<c:url value="/ver/${usuario.nombre}"/>'>
-		
-		<input type="date" name="fecha" />
-		<input type="submit" value="Enviar..">
-		
-	</form>
+    <div class="fecha">
+		<form action='<c:url value="/ver/${usuario.nombre}"/>'>
+			
+			<input type="date" name="fecha" />
+			<input type="submit" value="Enviar..">
+			
+		</form>
+	</div>
 	
-	<textarea hidden="hidden" id="json">${json}</textarea>
+	<!-- JSON OCULTO xD -->
+	<input type="text" hidden="hidden" id="json" value="${json}">
 	
 
 	
