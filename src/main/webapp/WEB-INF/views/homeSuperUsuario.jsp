@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Registro Usuario</title>
+<title>Home Director/a</title>
 
 <!-- Font Awesome -->
 <link
@@ -27,7 +27,7 @@
 	rel="stylesheet" type="text/css">
 
 
-<!--  librerias Bootstrap-->
+<!--  librerías Bootstrap-->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,44 +53,91 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"> <span><img
-				alt="ROBONAUTAS" src="resources/img/P1d.png" height="35"
-				width="auto" title="Robonautas" /> INICIO</span></a>
+						alt="ROBONAUTAS" src='<c:url value="resources/img/P1d.png"/>' height="30"
+						width="auto" title="Robonautas" /> INICIO</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					
-					<li><a href="#">LOGOUT</a></li>
+					<li><a href="logout">Cerrar Sesión</a></li>
+					<li><a href="#foot">Contacto</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
 	<!-- logo -->
-	<img src="<c:url value='/resources/img/P1d.png' />" class="imagen">
+	<img src="<c:url value='/resources/img/P1d.png' />" class="imagen"
+		alt="Logo Robonautas" title="bQuiet">
+
 
 	<!-- Lista usuarios -->
-	<h1>Información del Centro ${centro.nombre}</h1>
 
-	<p>${centro.nombre}</p>
 
-	<h2>Información Super Usuario ${superusuario.nombre}</h2>
 
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+						<h2>Panel del Centro Educativo ${centro.nombre}</h2>
+				</div>
+				<p>${centro.nombre}</p>
+			</div>
+		</div>
+	</div>
+
+
+	
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+						<h2>Panel de SuperUsuario ${superusuario.nombre}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	<p>${superusuario.nombre}</p>
 
-	<h2>Lista de Usuarios</h2>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<ul>
-		<c:forEach items="${usuarios}" var="user">
-
-			<li>
-				<p>
-					${user.nombre} <a href='<c:url value='/ver/${user.nombre}'/>'>
-						GESTIONAR</a> <a href="#"> ELIMINAR</a>
-				</p>
-			</li>
-
-		</c:forEach>
-	</ul>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>LISTA DE USUARIOS</h2>
+					<ul>
+						<c:forEach items="${usuarios}" var="user">
+							<li style="list-style: none;">
+								<p>
+									${user.nombre} <a href='<c:url value='/ver/${user.nombre}'/>'>
+										GESTIONAR</a> <a href="#"> ELIMINAR</a>
+								</p>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<br>
 	<br>
@@ -113,10 +160,12 @@
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<h2>Registro de Usuario</h2>
-								<form action="/bquiet/nuevoUsuario" method="get" class="form-group text-center">
+								<form action="/bquiet/nuevoUsuario" method="get"
+									class="form-group text-center">
 									<p>
 										Nombre usuario <input required="required" type="text"
-											name="nombreUsuario" placeholder=" Introduce tu nombre de usuario"
+											name="nombreUsuario"
+											placeholder=" Introduce tu nombre de usuario"
 											class="form-control text-center">
 									</p>
 									<p>
@@ -129,10 +178,10 @@
 											name="password2" placeholder="Repite tu contraseña"
 											class="form-control text-center">
 									</p>
-									
-									<input type="number" name="id_centro" readonly="readonly" value="${centro.id}"  hidden="hidden"/>
-									<input type="submit" value="Registrar"
-										class="active btn btn-danger" >
+
+									<input type="number" name="id_centro" readonly="readonly"
+										value="${centro.id}" hidden="hidden" /> <input type="submit"
+										value="Registrar" class="active btn btn-danger">
 								</form>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
@@ -154,9 +203,10 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<h2>R O B O N A U T A S</h2>
-            		<p>TECNOLOGÍA  Y ROBÓTICA EDUCATIVA</p>
-            		<p> 951 082 332 | 633 100 130 | info@robonautas.com
-					<br></p>
+					<p>TECNOLOGÍA Y ROBÓTICA EDUCATIVA</p>
+					<p>
+						951 082 332 | 633 100 130 | info@robonautas.com <br>
+					</p>
 				</div>
 				<div class="col-sm-6">
 					<p class="text-info text-right">

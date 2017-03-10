@@ -51,24 +51,26 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <span><img
-				alt="ROBONAUTAS" src="resources/img/P1d.png" height="35"
+				<a class="navbar-brand" href="#log"> <span><img
+				alt="ROBONAUTAS" src='<c:url value="resources/img/P1d.png"/>' height="30"
 				width="auto" title="Robonautas" /> bQuiet</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">LOGOUT</a></li>
+					<li><a href="#foot">Contacto</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<h1>¡Bienvenido!</h1>
+	<h1>¡Bienvenido!</h1> <br/>
+	
+	
 	<!-- logo -->
-	<img src="resources/img/P1d.png" class="imagen">
+	<img src='<c:url value="resources/img/P1d.png"/>' class="imagen" alt="Logo Robonautas" title="bQuiet" id="log"/>
 
 
 
-	<!--  login formu-->
+	<!--  login formulario-->
 	<form id="loginform" method="post" action="login">
 		<c:if test="${not empty mensajeError}">
 			<h3 style="color: #ffff99">${mensajeError}</h3>
@@ -78,8 +80,11 @@
 			name="pass" /> <input type="submit" class="loginbutton"
 			value="ENTRAR" />
 	</form>
-	<!--  formulario -->
-	<footer class="section">
+	
+	
+		
+	<!--  footer -->
+	<footer class="section" id="foot">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6">

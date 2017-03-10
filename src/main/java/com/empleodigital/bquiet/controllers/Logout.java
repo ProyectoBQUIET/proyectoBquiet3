@@ -15,8 +15,7 @@ public class Logout {
 	private HttpSession session;
 	
 	@RequestMapping("/logout")
-	public String logout(Model model) {
-		model.addAttribute("mensajeDespedida", "¡Hasta Pronto!");
+	public String logout() {
 		session.invalidate();
 
 		return "login";

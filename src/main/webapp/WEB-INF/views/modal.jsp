@@ -55,7 +55,7 @@
 				 <a class="navbar-brand" href="#"> <span><img
 				alt="ROBONAUTAS" src="resources/img/P1d.png" height="35"
 				width="auto" title="Robonautas" /> INICIO</span></a>
-			</div>
+			</div> 
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					
@@ -66,7 +66,7 @@
 	</div>
 
 	<!-- logo -->
-	<img src="resources/img/P1d.png" class="imagen">
+	<img src="resources/img/P1d.png" class="imagen" alt="Logo Robonautas" title="Robonautas"/>
 
 	<!-- Lista usuarios -->
 	<h1>Informacion del Centro ${centro.nombre}</h1>
