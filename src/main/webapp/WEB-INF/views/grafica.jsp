@@ -15,5 +15,5 @@
 	<div id="piechart" style="width: 900px; height: 500px"></div> 
 	 </body>
 	 
-	<input id="input" type="text" value='{"registros" : [{ "rango":"alto" , "value":70 },{ "rango":"medio" , "value":20 },{ "rango":"bajo" , "value":20 } ]}'/>
+	<input id="json" type="text" value='{"registros" : [{ "rango":"alto" , "value":70 },{ "rango":"medio" , "value":20 },{ "rango":"bajo" , "value":20 } ]}'/>
 </html>

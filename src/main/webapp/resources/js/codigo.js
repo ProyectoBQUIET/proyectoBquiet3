@@ -1,4 +1,4 @@
-window.onload = iniciar
+window.onload = cargar
 
 function iniciar(){
 	//recuperamos el boton y le asignamos una funcion al evento onclick(cuando se pulsa el boton con el raton)
@@ -9,13 +9,14 @@ function iniciar(){
 }
 
 function cargar(){
-	var textarea = document.getElementById("input").value;
 	
-	alert(textarea);
+	var textarea = document.getElementById("json").value;
+	//alert(textarea);
+
 	var json = ""+textarea;
 	//var json ='{"registros" : [{ "rango":"alto" , "value":70 },{ "rango":"medio" , "value":20 },{ "rango":"bajo" , "value":20 } ]}';
 	
-	alert(json);
+	//alert(json);
 	var obj = JSON.parse(json);
 	
 	var array = new Array();
