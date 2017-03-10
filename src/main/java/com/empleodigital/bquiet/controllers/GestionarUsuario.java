@@ -35,6 +35,7 @@ public class GestionarUsuario {
 			
 			if(user!=null) {
 				
+			
 				mav.addObject("usuario", user);
 				
 				String fecha = request.getParameter("fecha");

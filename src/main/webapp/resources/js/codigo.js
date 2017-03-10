@@ -36,12 +36,13 @@ function cargar(){
 		var data = google.visualization.arrayToDataTable(array);
 
 		var options = {
-				title: 'My Daily Activities',
+				title: 'Registro acústico diario',
 				slices: {
 		            0: { color: 'red' },
 		            1: { color: 'yellow' },
 		            2: { color: 'green' }
-		          } 
+		          }, 
+				backgroundColor: 'transparent'
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));

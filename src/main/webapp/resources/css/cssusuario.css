@@ -12,7 +12,16 @@ footer{
     color: grey;
 }
 
-    
+.row {
+	text-align: center;
+	width: 100%;
+}
+
+   .graph {
+   	height: 500px;
+   	width: 50%;
+   	margin-top: 200 auto;
+   }
 }
 .imagen {
     margin-top:190px;
@@ -29,3 +38,6 @@ footer{
 span{
 	color: white;
 }
+
+
+	
