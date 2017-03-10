@@ -78,7 +78,7 @@ public class Estadisticas {
 
 		smedio = smedio - (smayor + smenor);
 		
-		String json = "{'registros' : [{ 'rango':'alto' , 'value':x}, { 'rango':'medio' , 'value':y}, { 'rango':'bajo' , 'value':z}]}";
+		String json = "{\"registros\" : [{ \"rango\":\"alto\" , \"value\":x}, { \"rango\":\"medio\" , \"value\":y}, { \"rango\":\"bajo\" , \"value\":z}]}";
 		json = json.replace("x", ""+smayor);
 		json = json.replace("y", ""+smedio);
 		json = json.replace("z", ""+smenor);
