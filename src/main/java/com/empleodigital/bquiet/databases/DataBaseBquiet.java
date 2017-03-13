@@ -436,6 +436,19 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 		return centros;
 	}
+	
+	public static void actualizarUsuario(Usuario user, String username, String pass) {
+		
+		try {
+			
+			String sql = "UPDATE usuarios SET nombre=?, pass=? WHERE id=?";
+			jdbc.update(sql, new Object[]{username, pass, user.getId()});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 
 }

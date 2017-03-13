@@ -113,7 +113,17 @@
        </div>
      </div>
    </div>
+   
+   <!-- FORMULARIO ACTUALIZAR -->
 
+	<form method="post">
+	
+		<input type="text" hidden="hidden" value="${usuario.nombre}" name="usuario"/>
+		<input type="text" placeholder="Introduce tu nuevo usuario" name="username" required="required" />
+		<input type="password" placeholder="Introduce tu nueva contraseña" name="pass" required="required" />
+		<button class="btn btn-success" formaction='<c:url value='/actualizar'/>'>ACTUALIZAR</button>
+		
+	</form>
 
 
 	<!--  footer -->
