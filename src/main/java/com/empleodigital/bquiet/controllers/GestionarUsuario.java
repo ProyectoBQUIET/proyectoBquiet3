@@ -28,7 +28,7 @@ public class GestionarUsuario {
 
 		Usuario user = DataBaseBquiet.getUsuario(usuario);
 
-		Usuario loged = (Usuario)session.getAttribute("usuarioLogueado");
+		Usuario loged = (Usuario)session.getAttribute("usuario");
 
 		//System.out.println("Usuario: " + user);
 		//System.out.println("Logeado: " + loged);

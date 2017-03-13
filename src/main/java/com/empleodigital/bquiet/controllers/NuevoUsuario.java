@@ -25,9 +25,9 @@ public class NuevoUsuario {
 		
 		ModelAndView mav = new ModelAndView("login");
 		
-		if(session.getAttribute("usuarioLogueado") != null)  {
+		if(session.getAttribute("usuario") != null)  {
 			
-				Usuario loged = (Usuario) session.getAttribute("usuarioLogueado");
+				Usuario loged = (Usuario) session.getAttribute("usuario");
 				
 				int id_centro = Integer.parseInt(request.getParameter("id_centro"));
 				

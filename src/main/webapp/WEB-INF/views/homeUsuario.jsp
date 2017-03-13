@@ -79,7 +79,7 @@
 				<h2>Información Usuario</h2>
 				<div class="col-md-12">
 					<div class="caja">
-						<p>Nombre usuario:  ${usuarioLogueado.nombre}
+						<p>Nombre usuario:  ${usuario.nombre}
 				
 						<br />
 						

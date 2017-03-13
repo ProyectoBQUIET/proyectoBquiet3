@@ -25,9 +25,9 @@ public class GestionarCentro {
 		
 		Centro centro = DataBaseBquiet.getCentro(nombrecentro);
 		
-		if(centro != null && session.getAttribute("usuarioLogueado") != null) {
+		if(centro != null && session.getAttribute("usuario") != null) {
 			
-			Usuario loged = (Usuario) session.getAttribute("usuarioLogueado");
+			Usuario loged = (Usuario) session.getAttribute("usuario");
 			
 			if(loged.getId_tipousuario() == TipoUsuario.ADMINISTRADOR ||
 					loged.getId_tipousuario() == TipoUsuario.SUPERUSUARIO &&

@@ -39,7 +39,7 @@ public class ControladorHome {
 			Usuario usuario = DataBaseBquiet.getUsuario(user, pass);
 			
 			if(usuario!=null){
-				session.setAttribute("usuarioLogueado", usuario);
+				session.setAttribute("usuario", usuario);
 				//System.out.println("Usuario logueado: " + usuario);
 				if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
 					mav.setViewName("homeAdministrador");
