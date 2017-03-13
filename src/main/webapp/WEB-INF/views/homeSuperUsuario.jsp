@@ -74,7 +74,7 @@
 				<div class="col-md-12">
 						<h2>Panel del Centro Educativo</h2>
 				</div>
-				<p>${centro.nombre}</p>
+				
 			</div>
 		</div>
 	</div>
@@ -86,10 +86,10 @@
 			<div class="col-md-6">
 			
 				<h2>Información del Centro</h2>
-				<p>Nombre: </p>
-				<p>Director: </p>
-				<p>Provincia: </p>
-				<p>Dirección: </p>
+				<p>Nombre: ${centro.nombre} </p>
+				<p>Director: ${superusuario.nombre} </p>
+				<p>Provincia: ${centro.provincia} </p>
+				<p>Dirección: ${centro.direccion} </p>
 				<p>Nº usuarios: </p>
 				
 			
@@ -97,14 +97,19 @@
 			<div class="col-md-6">
 			
 				<h2>Lista de Usuarios</h2>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
-				<p>ivan </p>
+				<ul>
+					<c:forEach items="${usuarios}" var="user">
+						<li style="list-style: none;">
+							<p>
+								${user.nombre} <a href='<c:url value='/ver/${user.nombre}'/>'>
+									GESTIONAR</a> <a href="#"> ELIMINAR</a>
+							</p>
+						</li>
+					</c:forEach>
+				</ul>
+				<br>
+				<button type="button" class="btn btn-default" data-toggle="modal"
+					data-target="#myModal">Nuevo Usuario</button>
 			</div>
 		</div>
 	
@@ -119,64 +124,12 @@
 
 
 
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-						<h2>Panel de SuperUsuario ${superusuario.nombre}</h2>
-					</div>
-				</div>
-			</div>
-		</div>
+
 	
-	<p>${superusuario.nombre}</p>
-
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>LISTA DE USUARIOS</h2>
-					<ul>
-						<c:forEach items="${usuarios}" var="user">
-							<li style="list-style: none;">
-								<p>
-									${user.nombre} <a href='<c:url value='/ver/${user.nombre}'/>'>
-										GESTIONAR</a> <a href="#"> ELIMINAR</a>
-								</p>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<br>
-	<br>
 	<!-- MODAL -->
 	<div class="container">
-		<button type="button" class="btn btn-default" data-toggle="modal"
-			data-target="#myModal">Nuevo Usuario</button>
+		
 		<div class="fade modal text-center" id="myModal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -212,7 +165,7 @@
 									</p>
 
 									<input type="number" name="id_centro" readonly="readonly"
-										value="${centro.id}"  /> <input type="submit"
+										value="${centro.id}" hidden="hidden" /> <input type="submit"
 										value="Registrar" class="active btn btn-danger">
 								</form>
 								<div class="modal-footer">
