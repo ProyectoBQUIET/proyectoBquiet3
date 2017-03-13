@@ -12,19 +12,13 @@
 <!-- Font Awesome -->
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css"/>
 
 <!--  pingendon -->
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript"
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css">
 
 
 <!--  librerías Bootstrap-->
@@ -53,12 +47,12 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"> <span><img
-						alt="ROBONAUTAS" src='<c:url value="resources/img/P1d.png"/>' height="30"
-						width="auto" title="Robonautas" /> INICIO</span></a>
+						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
+						width="auto" title="Robonautas" /> BQuiet</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Cerrar Sesión</a></li>
+					<li><a href='<c:url value="/logout"/>'>Cerrar Sesión</a></li>
 					<li><a href="#foot">Contacto</a></li>
 				</ul>
 			</div>
@@ -78,7 +72,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-						<h2>Panel del Centro Educativo ${centro.nombre}</h2>
+						<h2>Panel del Centro Educativo</h2>
 				</div>
 				<p>${centro.nombre}</p>
 			</div>
@@ -86,7 +80,45 @@
 	</div>
 
 
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+			
+				<h2>Información del Centro</h2>
+				<p>Nombre: </p>
+				<p>Director: </p>
+				<p>Provincia: </p>
+				<p>Dirección: </p>
+				<p>Nº usuarios: </p>
+				
+			
+			</div>
+			<div class="col-md-6">
+			
+				<h2>Lista de Usuarios</h2>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+				<p>ivan </p>
+			</div>
+		</div>
 	
+		
+	</div>
+
+
+
+
+
+
+
+
+
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -180,7 +212,7 @@
 									</p>
 
 									<input type="number" name="id_centro" readonly="readonly"
-										value="${centro.id}" hidden="hidden" /> <input type="submit"
+										value="${centro.id}"  /> <input type="submit"
 										value="Registrar" class="active btn btn-danger">
 								</form>
 								<div class="modal-footer">
@@ -214,7 +246,7 @@
 					</p>
 					<div class="row">
 						<div class="col-md-12 hidden-xs text-right">
-							<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
+							<a href="https://twitter.com/LosRobonautas"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
 							<a href="https://www.facebook.com/losrobonautas/"><i
 								class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
 						</div>

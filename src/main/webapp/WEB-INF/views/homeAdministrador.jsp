@@ -52,12 +52,12 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#"> <span><img
-						alt="ROBONAUTAS" src='<c:url value="resources/img/P1d.png"/>' height="30"
-						width="auto" title="Robonautas" /> INICIO </span></a>
+						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
+						width="auto" title="Robonautas" /> BQuiet </span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Cerrar Sesión</a></li>
+					<li><a href="<c:url value='/logout'/>">Cerrar Sesión</a></li>
 					<li><a href="#foot">Contacto</a></li>
 				</ul>
 			</div>
@@ -65,44 +65,31 @@
 	</div>
 
 	<!-- logo -->
-	<img src='<c:url value="resources/img/P1d.png"/>' class="imagen"
+	<img src='<c:url value="/resources/img/P1d.png"/>' class="imagen"
 		alt="Logo Robonautas" title="bQuiet" />
-	<br />
+	
 
-
-	<div class="section">
+	<div class="sectionn">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="page-header">
 						<h1>
-							Panel de SuperUsuario <small>  NOMBRE DEL SUPERUSUARIO</small>
+							PANEL DEL ADMINISTRADOR
 						</h1>
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<h5>${usuarioLogueado}</h5>
-
-	<div class="section">
+	
+	
+	<div class="sectionn">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>CENTROS EDUCATIVOS REGISTRADOS</h2>
+					<h2>Centros educativos registrados	</h2>
 
 					<ul>
 						<c:forEach items="${centros}" var="centro">
@@ -118,9 +105,18 @@
 			</div>
 		</div>
 	</div>
+	
 
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<br>
 
 
 	<!-- MODAL -->
@@ -145,7 +141,7 @@
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<h2>Registro de Centro Educativo</h2>
-								<form action="nuevocentro" method="get"
+								<form action="<c:url value='/nuevocentro'/>" method="get"
 									class="form-group text-center">
 									<p>
 										Nombre Centro educativo <input required="required" type="text"
@@ -219,7 +215,7 @@
 					</p>
 					<div class="row">
 						<div class="col-md-12 hidden-xs text-right">
-							<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
+							<a href="https://twitter.com/LosRobonautas"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
 							<a href="https://www.facebook.com/losrobonautas/"><i
 								class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
 						</div>

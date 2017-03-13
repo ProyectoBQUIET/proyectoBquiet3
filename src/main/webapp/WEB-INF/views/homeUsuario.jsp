@@ -58,7 +58,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout">Cerrar Sesión</a></li>
+					<li><a href="<c:url value='/logout'/>">Cerrar Sesión</a></li>
 					<li><a href="#foot">Contacto</a></li>
 				</ul>
 			</div>
@@ -130,7 +130,7 @@
 					<p class="text-info text-right"></p>
 					<div class="row">
 						<div class="col-md-12 hidden-xs text-right">
-							<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
+							<a href="https://twitter.com/LosRobonautas"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
 							<a href="https://www.facebook.com/losrobonautas/"><i
 								class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
 						</div>

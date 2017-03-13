@@ -52,8 +52,8 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#log"> <span><img
-				alt="ROBONAUTAS" src='<c:url value="resources/img/P1d.png"/>' height="30"
-				width="auto" title="Robonautas" /> bQuiet</span></a>
+				alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
+				width="auto" title="Robonautas" /> BQuiet</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -66,12 +66,12 @@
 	
 	
 	<!-- logo -->
-	<img src='<c:url value="resources/img/P1d.png"/>' class="imagen" alt="Logo Robonautas" title="bQuiet" id="log"/>
+	<img src='<c:url value="/resources/img/P1d.png"/>' class="imagen" alt="Logo Robonautas" title="bQuiet" id="log"/>
 
 
 
 	<!--  login formulario-->
-	<form id="loginform" method="post" action="login">
+	<form id="loginform" method="post" action="<c:url value='/login'/>">
 		<c:if test="${not empty mensajeError}">
 			<h3 style="color: #ffff99">${mensajeError}</h3>
 		</c:if>
@@ -100,7 +100,7 @@
 					</p>
 					<div class="row">
 						<div class="col-md-12 hidden-xs text-right">
-							<a href="#"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
+							<a href="https://twitter.com/LosRobonautas"><i class="fa fa-3x fa-fw fa-twitter text-info"></i></a>
 							<a href="https://www.facebook.com/losrobonautas/"><i
 								class="fa fa-3x fa-facebook fa-fw text-primary"></i></a>
 						</div>
