@@ -421,6 +421,21 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 	}
 
+	
+	public static ArrayList<Centro> getCentroFiltrado(String nombre) {
+		ArrayList<Centro> centros = new ArrayList<Centro>();
+		String nombreCentro= '%'+nombre+'%';
+		try {
+			String sql = "SELECT * FROM centros WHERE nombre LIKE ?";
+			centros = (ArrayList<Centro>)jdbc.query(sql,
+					new BeanPropertyRowMapper<Centro>(Centro.class),
+					new Object[]{nombreCentro});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return centros;
+	}
 
 
 }

@@ -47,5 +47,13 @@ div.scroll {
     height: 175px;
     overflow: auto;
 }
+div.scrollUsuarios {
+    height: 250px;
+    overflow: auto;
+}
+
+.letraNegra{
+	color: black;
+}
 
 

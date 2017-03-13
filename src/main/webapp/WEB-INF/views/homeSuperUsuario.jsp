@@ -97,6 +97,7 @@
 			<div class="col-md-6">
 			
 				<h2>Lista de Usuarios</h2>
+				<div class="scrollUsuarios">
 				<ul>
 					<c:forEach items="${usuarios}" var="user">
 					
@@ -113,6 +114,7 @@
 						
 					</c:forEach>
 				</ul>
+				</div>
 				<br>
 				<button type="button" class="btn btn-default" data-toggle="modal"
 					data-target="#myModal">Nuevo Usuario</button>

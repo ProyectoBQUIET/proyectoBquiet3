@@ -84,13 +84,12 @@
 		</div>
 	</div>
 	
-	
 	<div class="sectionn">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Centros educativos registrados	</h2>
-					<form action="filtrarCentro">
+					<form action="filtrarCentro" class="letraNegra">
 						<input type="text" name="nombreCentroBuscado" placeholder="Introduce nombre del centro"/>
 						<button type="submit">
 						  <span class="glyphicon glyphicon-search"></span> 
@@ -232,9 +231,6 @@
 			</div>
 		</div>
 	</footer>
-
-
-
 
 </body>
 </html>
