@@ -43,4 +43,9 @@ h2{
 	    position: relative;
 }
 
+div.scroll {
+    height: 175px;
+    overflow: auto;
+}
+
 

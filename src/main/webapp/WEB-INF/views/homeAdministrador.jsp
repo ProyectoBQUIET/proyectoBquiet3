@@ -40,7 +40,7 @@
 </head>
 
 <body>
-
+	
 	<!--  heading -->
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container">
@@ -90,7 +90,14 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Centros educativos registrados	</h2>
-
+					<form action="filtrarCentro">
+						<input type="text" name="nombreCentroBuscado" placeholder="Introduce nombre del centro"/>
+						<button type="submit">
+						  <span class="glyphicon glyphicon-search"></span> 
+						</button>
+					</form> 
+					<br>
+					<div class="scroll">
 					<ul>
 						<c:forEach items="${centros}" var="centro">
 							<li style="list-style: none;">
@@ -101,6 +108,7 @@
 							</li>
 						</c:forEach>
 					</ul>
+					</div>
 				</div>
 			</div>
 		</div>
