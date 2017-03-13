@@ -99,12 +99,18 @@
 				<h2>Lista de Usuarios</h2>
 				<ul>
 					<c:forEach items="${usuarios}" var="user">
+					
 						<li style="list-style: none;">
-							<p>
-								${user.nombre} <a href='<c:url value='/ver/${user.nombre}'/>'>
-									GESTIONAR</a> <a href="#"> ELIMINAR</a>
-							</p>
+						
+							<form method="post">
+								<p>${user.nombre}
+									<button class="btn btn-success" formaction='<c:url value='/ver/${user.nombre}'/>'>GESTIONAR</button>
+									<button class="btn btn-danger" formaction='<c:url value='/eliminar/${user.nombre}'/>'>ELIMINAR</button>
+								</p>
+							</form>
+							
 						</li>
+						
 					</c:forEach>
 				</ul>
 				<br>
@@ -115,16 +121,6 @@
 	
 		
 	</div>
-
-
-
-
-
-
-
-
-
-
 
 	
 	<!-- MODAL -->
@@ -151,22 +147,26 @@
 										Nombre usuario <input required="required" type="text"
 											name="nombreUsuario"
 											placeholder=" Introduce tu nombre de usuario"
-											class="form-control text-center">
+											class="form-control text-center" />
 									</p>
 									<p>
 										Contraseña <input required="required" type="password"
 											name="passUsuario" placeholder="Introduce tu contraseña"
-											class="form-control text-center">
+											class="form-control text-center" />
 									</p>
 									<p>
 										Repetir contraseña <input required="required" type="password"
 											name="password2" placeholder="Repite tu contraseña"
-											class="form-control text-center">
+											class="form-control text-center" />
 									</p>
-
+									<p>
+										Cantidad de Usuarios <input required="required" type="number"
+											name="cantidad" placeholder="Introduce el numero de usuarios"
+											class="form-control text-center" value=1 />
+									</p>
 									<input type="number" name="id_centro" readonly="readonly"
 										value="${centro.id}" hidden="hidden" /> <input type="submit"
-										value="Registrar" class="active btn btn-danger">
+										value="Registrar" class="active btn btn-danger"/>
 								</form>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"

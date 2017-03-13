@@ -393,21 +393,32 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		Centro centro = null;
 
 		try {
-			
+
 			UsuariosCentros uscen = null;
-			
+
 			String sql = "SELECT * FROM usuarios_centros WHERE id_usuario=?";
 			uscen = jdbc.queryForObject(sql,
 					new BeanPropertyRowMapper<UsuariosCentros>(UsuariosCentros.class),
 					new Object[]{user.getId()});
-			
+
 			centro = getCentroById(uscen.getId_centro());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return centro;
+	}
+
+	public static void eliminarUsuario(Usuario user) {
+
+		try {
+			String sql = "DELETE FROM usuarios WHERE id=?";
+			jdbc.update(sql, new Object[]{user.getId()});	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 
