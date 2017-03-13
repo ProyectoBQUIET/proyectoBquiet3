@@ -23,21 +23,23 @@ public class GestionarCentro {
 	public ModelAndView on(@PathVariable("nombrecentro") String nombrecentro) {
 		ModelAndView mav = new ModelAndView("login");
 		
-		if(session.getAttribute("usuarioLogueado") != null && 
-				((Usuario)session.getAttribute("usuarioLogueado")).getId_tipousuario() == TipoUsuario.ADMINISTRADOR) {
+		Centro centro = DataBaseBquiet.getCentro(nombrecentro);
+		
+		if(centro != null && session.getAttribute("usuarioLogueado") != null) {
 			
-			Centro centro = DataBaseBquiet.getCentro(nombrecentro);
+			Usuario loged = (Usuario) session.getAttribute("usuarioLogueado");
 			
-			mav.setViewName("homeSuperUsuario");
-			
-			if(centro != null) {
+			if(loged.getId_tipousuario() == TipoUsuario.ADMINISTRADOR ||
+					loged.getId_tipousuario() == TipoUsuario.SUPERUSUARIO &&
+					loged.getId() == DataBaseBquiet.getSuperUsuario(centro.getId()).getId()) {
+				
+				mav.setViewName("homeSuperUsuario");
 				
 				mav.addObject("centro", centro);
 				
 				mav.addObject("superusuario", DataBaseBquiet.getSuperUsuario(centro.getId()));
 				
 				mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(centro.getId()));
-				
 				
 			}
 			

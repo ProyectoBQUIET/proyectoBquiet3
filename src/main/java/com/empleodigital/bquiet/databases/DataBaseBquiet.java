@@ -17,6 +17,7 @@ import com.empleodigital.bquiet.beans.RegistroBean;
 import com.empleodigital.bquiet.beans.RegistroPrincipalBean;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
+import com.empleodigital.bquiet.beans.UsuariosCentros;
 import com.empleodigital.bquiet.util.Estadisticas;
 import com.empleodigital.bquiet.util.UnixTime;
 
@@ -388,10 +389,26 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		return num;
 	}
 
+	public static Centro getCentroByUsuario(Usuario user) {
+		Centro centro = null;
 
+		try {
+			
+			UsuariosCentros uscen = null;
+			
+			String sql = "SELECT * FROM usuarios_centros WHERE id_usuario=?";
+			uscen = jdbc.queryForObject(sql,
+					new BeanPropertyRowMapper<UsuariosCentros>(UsuariosCentros.class),
+					new Object[]{user.getId()});
+			
+			centro = getCentroById(uscen.getId_centro());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-
-
+		return centro;
+	}
 
 
 
