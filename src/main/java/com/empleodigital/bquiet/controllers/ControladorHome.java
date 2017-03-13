@@ -40,19 +40,19 @@ public class ControladorHome {
 			
 			if(usuario!=null){
 				session.setAttribute("usuarioLogueado", usuario);
-				System.out.println(usuario.getId_tipousuario());
+				//System.out.println("Usuario logueado: " + usuario);
 				if(usuario.getId_tipousuario()==TipoUsuario.ADMINISTRADOR){
 					mav.setViewName("homeAdministrador");
 					mav.addObject("centros", DataBaseBquiet.listaCentros());
-				}else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
+				} else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
 					mav.setViewName("homeSuperUsuario");
 					mav.addObject("superusuario",DataBaseBquiet.getUsuario(user, pass));
 					mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
 					mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
-				}else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
+				} else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
 					mav.setViewName("homeUsuario");
 				}
-			}else{
+			} else{
 				mav.addObject("mensajeError","Usuario o contraseña incorrecto");
 				
 			}

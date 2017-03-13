@@ -6,6 +6,8 @@ public class UsuariosCentros {
 	private int id_usuario;
 	private int id_centro;
 	
+	public UsuariosCentros() {}
+	
 	public UsuariosCentros(int id, int id_usuario, int id_centro) {
 		this.id = id;
 		this.id_usuario = id_usuario;

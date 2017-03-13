@@ -115,6 +115,18 @@ INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:10:00', 80
 INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:15:00', 60);
 INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:20:00', 60);
 
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:21:00', 80);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:23:00', 80);
+
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:24:00', 60);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:25:00', 60);
+
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:28:00', 80);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:29:15', 80);
+
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:29:45', 60);
+INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:32:10', 60);
+
 
 
 
