@@ -107,7 +107,7 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
 
 
-INSERT INTO registros(id, media, id_usuario, fecha) VALUES (1, 70, 1, '2017/03/10');
+INSERT INTO registros(id, media, id_usuario, fecha) VALUES (1, 70, 6, '2017/03/13');
 
 INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:05:00', 80);
 INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:10:00', 80);
