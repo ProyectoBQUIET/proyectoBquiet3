@@ -29,7 +29,9 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
-
+<!-- paginacion -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <!-- Local CSS-->
 <link rel="stylesheet" href="<c:url value='/resources/css/css2.css'/> " />
 
@@ -125,39 +127,72 @@
 	</form>
 			</div>
 			
+		
+			<div class="col-md-2">
+			</div>
 			
-
-			
-			
-			<div class="col-md-6">
-			
-				<h2>Lista de Usuarios</h2>
+			<div class="col-md-4">
 				
-				<ul>
-					<c:forEach items="${usuarios}" var="user">
-					
-						<li style="list-style: none;">
-						
-							<form method="post">
-								<p>${user.nombre}
-									<button type="submit" class="btn btn-success" formaction='<c:url value='/ver/${user.nombre}'/>'> <span class="glyphicon glyphicon-pencil"></span>  </button>
-									<button class="btn btn-danger" formaction='<c:url value='/eliminar/${user.nombre}'/>'> <span class="glyphicon glyphicon-trash"></span>  </button>
-								</p>
-							</form>
+				
+				<table id="table_id" class="display">
+				    <thead>
+				        <tr>
+				            <th>Lista de Usuarios</th>
+				            <th data-orderable="false"></th>
+				        </tr>
+				    </thead>
+				    <tbody class="letraNegra">
+				      
+				      	<c:forEach items="${usuarios}" var="user">
 							
-						</li>
-						
-					</c:forEach>
-				</ul>
-				</div>
+							<tr>
+				            	<td>
+				            		${user.nombre}  
+				            	</td>
+				            	<td>
+					            	<a href="<c:url value='/ver/${user.nombre}'/>"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp
+									<a href='<c:url value="/eliminar/${user.nombre}"/>'><span class="glyphicon glyphicon-trash"></span></a>
+				            	</td>
+				        	</tr>
+							
+						</c:forEach>
+				      
+				    </tbody>
+				</table>
+				
+				<br>
 				<br>
 				<button type="button" class="btn btn-default" data-toggle="modal"
 					data-target="#myModal">Nuevo Usuario</button>
+			
+				</div>
+				
+				
 			</div>
 		</div>
 	
-		
-	</div>
+	<script>
+	$(document).ready( function () {
+		$('#table_id').DataTable( {
+    		"language": {
+        "lengthMenu": "Mostrar _MENU_ centros por página",
+        "zeroRecords": "No se ha encontrado nada - lo sentimos!",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "No se ha encontrado nada - lo sentimos!",
+        "infoFiltered": "(filtrado por  _MAX_ registros totales)",
+        "search":         "Buscar:",
+        "paginate": {
+            "first":      "Primero",
+            "last":       "Último",
+            "next":       "Siguiente",
+            "previous":   "Anterior"
+        },
+        }
+    });
+		$('#table_id_length').hide();
+
+	} );
+	</script>
 
 	
 	<!-- MODAL -->
