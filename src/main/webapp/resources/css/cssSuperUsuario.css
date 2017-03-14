@@ -11,32 +11,16 @@ footer{
     background-color: white;
     color: grey;
 }
-
-.row {
-	text-align: center;
-	width: 100%;
-}
-
-   .graph {
-   	height: 500px;
-   	width: 50%;
-   	margin-top: 200 auto;
-   }
+h2{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    
 }
 .imagen {
     margin-top:190px;
     display:block;
     margin:auto;
     
-}
-
-
-.fecha {
-	color: black;
-}
-
-span{
-	color: black;
 }
 .modal-content {
     color: black;
@@ -55,5 +39,34 @@ span{
 }
 
 
+.section{
+	    text-align: center;
+	   
+}
 
-	
+div.scroll {
+    height: 175px;
+    overflow: auto;
+}
+div.scrollUsuarios {
+    height: 250px;
+    overflow: auto;
+}
+
+.letraNegra{
+	color: black;
+}
+.verticalLine {
+  border-left: thick solid #ff0000;
+    width: 1px; /* Line width */
+      background-color: black; /* Line color */
+      height: 100%; /* Override in-line if you want specific height. */
+      float: left;
+}
+
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px;
+  
+
+}

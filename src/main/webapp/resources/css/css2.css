@@ -56,11 +56,17 @@ div.scrollUsuarios {
 .letraNegra{
 	color: black;
 }
-
+.verticalLine {
+  border-left: thick solid #ff0000;
+    width: 1px; /* Line width */
+      background-color: black; /* Line color */
+      height: 100%; /* Override in-line if you want specific height. */
+      float: left;
+}
 
 .rwd-table {
   margin: 1em 0;
   min-width: 300px;
- 
+
 
 

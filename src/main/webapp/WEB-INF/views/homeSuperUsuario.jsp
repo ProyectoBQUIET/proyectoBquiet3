@@ -33,7 +33,7 @@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <!-- Local CSS-->
-<link rel="stylesheet" href="<c:url value='/resources/css/css2.css'/> " />
+<link rel="stylesheet" href="<c:url value='/resources/css/cssSuperUsuario.css'/> " />
 
 
 </head>
@@ -161,15 +161,8 @@
 				
 
 			</div>
-			
-		
-			<div class="col-md-2">
-			</div>
-			
-			<div class="col-md-4">
-				
-				
-				<table id="table_id" class="display">
+			<div class="col-md-5">
+				<table id="table_id" class="display table table-hover">
 				    <thead>
 				        <tr>
 				            <th>Lista de Usuarios</th>
@@ -188,20 +181,19 @@
 					            	<a href="<c:url value='/ver/${user.nombre}'/>"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp
 									<a href='<c:url value="/eliminar/${user.nombre}"/>'><span class="glyphicon glyphicon-trash"></span></a>
 				            	</td>
-				        	</tr>
-							
+				        	</tr>	
 						</c:forEach>
-				      
 				    </tbody>
 				</table>
 				
 				<br>
 				<br>
+				
 				<button type="button" class="btn btn-default" data-toggle="modal"
 					data-target="#myModal">Nuevo Usuario</button>
 			
 				</div>
-				
+	
 				
 			</div>
 		</div>
@@ -216,7 +208,7 @@
 		
 		
 	
-	<script>
+	<script class="color">
 	$(document).ready( function () {
 		$('#table_id').DataTable( {
     		"language": {
