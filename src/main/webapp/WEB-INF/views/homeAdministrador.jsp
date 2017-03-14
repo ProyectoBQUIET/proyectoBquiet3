@@ -37,7 +37,7 @@
 <!-- Latest compiled and minified JavaScript -->
 
 <!-- Local CSS-->
-<link rel="stylesheet" href="<c:url value='/resources/css/css2.css'/> " />
+<link rel="stylesheet" href="<c:url value='/resources/css/cssadministrador.css'/> " />
 </head>
 
 <body>
