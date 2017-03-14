@@ -104,10 +104,7 @@
 								<td> Dirección </td>
 								<td> ${centro.direccion} </td>
 							</tr>
-							<tr>
-								<td> Nº Usuarios </td>
-								<td> ... <td>
-							</tr>
+							
 						
 						</thbody>
 				</table>
