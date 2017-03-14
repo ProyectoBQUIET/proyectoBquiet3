@@ -50,6 +50,7 @@ public class ControladorHome {
 					mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
 					mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
 				} else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
+					mav.addObject("centro", DataBaseBquiet.getCentroByUsuario(usuario));
 					mav.setViewName("homeUsuario");
 				}
 			} else{

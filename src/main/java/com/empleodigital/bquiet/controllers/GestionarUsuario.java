@@ -43,6 +43,8 @@ public class GestionarUsuario {
 				mav.setViewName("homeUsuario");
 
 				mav.addObject("usuario", user);
+				
+				mav.addObject("centro", DataBaseBquiet.getCentroByUsuario(user));
 
 				String fecha = request.getParameter("fecha");
 
