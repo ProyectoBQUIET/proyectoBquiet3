@@ -112,19 +112,58 @@
 						</thbody>
 				</table>
 				
+				<button type="button" class="btn btn-default" data-toggle="modal"
+			data-target="#myModal2"> Modificar Centro Educativo</button>
 				
-								<!-- FORMULARIO ACTUALIZAR -->
-	<form method="post">
-		<input type="number" name="id_centro" hidden="hidden" readonly="readonly" value="${centro.id}" />
-		<br/>
-		<input class="form-control" type="text" name="nombre" placeholder="Introduce el nuevo nombre para el Centro" />
-		<br/>
-		<input class="form-control" type="text" name="provincia" placeholder="Inroduce la provincia del Centro" />
-		<br/>
-		<input class="form-control" type="text" name="direccion" placeholder="Introduce la direccion del Centro" />
-		<br/>
-		<button class="btn btn-success" formaction='<c:url value='/actualizarCentro'/>'>ACTUALIZAR</button>
-	</form>
+				
+				<!-- MODAL MODIFICAR TABLA -->
+	<div class="container">
+		
+		<div class="fade modal text-left" id="myModal2">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modificar Centro Educativo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+					
+					
+							<!-- FORMULARIO ACTUALIZAR -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<h2>Modificar Centro Educativo</h2>
+						<form  action="" method="post" clas="form-group text-center">
+							<input type="number" name="id_centro" hidden="hidden" readonly="readonly" value="${centro.id}" />
+							<br/>
+							<input class="form-control text-center" type="text" name="nombre" placeholder="Introduce el nuevo nombre para el Centro" />
+							<br/>
+							<input class="form-control text-center" type="text" name="provincia" placeholder="Inroduce la provincia del Centro" />
+							<br/>
+							<input class="form-control text-center" type="text" name="direccion" placeholder="Introduce la direccion del Centro" />
+							<br/>
+							<button class="btn btn-success" formaction='<c:url value='/actualizarCentro'/>'>ACTUALIZAR</button>
+						</form>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Cancelar</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+				
+				
+				
+
 			</div>
 			
 		
@@ -170,6 +209,16 @@
 				
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	<script>
 	$(document).ready( function () {
@@ -195,7 +244,7 @@
 	</script>
 
 	
-	<!-- MODAL -->
+	<!-- MODAL nuevo usuario-->
 	<div class="container">
 		
 		<div class="fade modal text-center" id="myModal">
@@ -261,6 +310,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6">
+					<br/>
 					<h2>R O B O N A U T A S</h2>
 					<p>TECNOLOGÍA Y ROBÓTICA EDUCATIVA</p>
 					<p>
