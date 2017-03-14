@@ -88,9 +88,10 @@
 	<div class="section">
 		<div class="container">
 			<div class="row">
+				<div class="col-md-3"></div>
 				<div class="col-md-6 ">
 				<!-- paginacion -->
-					<table id="table_id" class="display table table-bordered table-condensed table-hover table-striped"">
+					<table id="table_id" class="display table table-bordered table-condensed table-hover table-striped">
 				    <thead>
 				        <tr>
 				            <th>Centros educativos registrados</th>
@@ -99,7 +100,6 @@
 				        </tr>
 				    </thead>
 				    <tbody class="letraNegra">
-				      
 				      	<c:forEach items="${centros}" var="centro">
 							
 							<tr>
