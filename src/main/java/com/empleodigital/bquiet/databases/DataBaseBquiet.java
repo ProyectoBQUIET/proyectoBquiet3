@@ -449,6 +449,22 @@ public class DataBaseBquiet extends DataBaseGenerica {
 		}
 		
 	}
+	
+	public static void actualizarCentro(int id_centro, String nombre, String provincia, String direccion) {
+		
+		try {
+			
+			Centro centro = getCentroById(id_centro);
+			
+			String sql = "UPDATE centros SET nombre=?, provincia=?, direccion=? WHERE id=?";
+			jdbc.update(sql, new Object[]{nombre, provincia, direccion, centro.getId()});
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 
 }
