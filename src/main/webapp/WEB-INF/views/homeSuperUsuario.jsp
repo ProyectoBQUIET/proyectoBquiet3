@@ -133,7 +133,7 @@
 					<div class="row">
 						<div class="col-md-12 text-center">
 							<h2>Modificar Centro Educativo</h2>
-						<form  action="" method="post" clas="form-group text-center">
+						<form   method="post" class="form-group text-center">
 							<input type="number" name="id_centro" hidden="hidden" readonly="readonly" value="${centro.id}" />
 							<br/>
 							<input class="form-control text-center" type="text" name="nombre" placeholder="Introduce el nuevo nombre para el Centro" />
