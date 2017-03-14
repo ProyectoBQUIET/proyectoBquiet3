@@ -84,20 +84,55 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-			
 				<h2>Información del Centro</h2>
-				<p>Nombre: ${centro.nombre} </p>
-				<p>Director: ${superusuario.nombre} </p>
-				<p>Provincia: ${centro.provincia} </p>
-				<p>Dirección: ${centro.direccion} </p>
-				<p>Nº usuarios: </p>
+					<table class="table">
+						<thbody>
+							<tr>
+								<td> Nombre </td>
+								<td> ${centro.nombre} </td>
+							<tr>
+								<td> Director </td>
+								<td> ${superusuario.nombre}
+							</tr>
+							<tr>
+								<td> Provincia </td>
+								<td> ${centro.provincia} <td>
+							</tr>
+							<tr>
+								<td> Dirección </td>
+								<td> ${centro.direccion} </td>
+							</tr>
+							<tr>
+								<td> Nº Usuarios </td>
+								<td> ... <td>
+							</tr>
+						
+						</thbody>
+				</table>
 				
-			
+				
+								<!-- FORMULARIO ACTUALIZAR -->
+	<form method="post">
+		<input type="number" name="id_centro" hidden="hidden" readonly="readonly" value="${centro.id}" />
+		<br/>
+		<input class="form-control" type="text" name="nombre" placeholder="Introduce el nuevo nombre para el Centro" />
+		<br/>
+		<input class="form-control" type="text" name="provincia" placeholder="Inroduce la provincia del Centro" />
+		<br/>
+		<input class="form-control" type="text" name="direccion" placeholder="Introduce la direccion del Centro" />
+		<br/>
+		<button class="btn btn-success" formaction='<c:url value='/actualizarCentro'/>'>ACTUALIZAR</button>
+	</form>
 			</div>
+			
+			
+
+			
+			
 			<div class="col-md-6">
 			
 				<h2>Lista de Usuarios</h2>
-				<div class="scrollUsuarios">
+				
 				<ul>
 					<c:forEach items="${usuarios}" var="user">
 					
@@ -105,8 +140,8 @@
 						
 							<form method="post">
 								<p>${user.nombre}
-									<button class="btn btn-success" formaction='<c:url value='/ver/${user.nombre}'/>'>GESTIONAR</button>
-									<button class="btn btn-danger" formaction='<c:url value='/eliminar/${user.nombre}'/>'>ELIMINAR</button>
+									<button type="submit" class="btn btn-success" formaction='<c:url value='/ver/${user.nombre}'/>'> <span class="glyphicon glyphicon-pencil"></span>  </button>
+									<button class="btn btn-danger" formaction='<c:url value='/eliminar/${user.nombre}'/>'> <span class="glyphicon glyphicon-trash"></span>  </button>
 								</p>
 							</form>
 							
@@ -183,6 +218,8 @@
 		</div>
 	</div>
 	<br>
+	
+
 	<br>
 	<!--  footer -->
 	<footer class="section">
