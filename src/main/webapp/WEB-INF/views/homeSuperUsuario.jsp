@@ -48,7 +48,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <span><img
+				<a class="navbar-brand" href='<c:url value="/home"/>'> <span><img
 						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
 						width="auto" title="Robonautas" /> BQuiet</span></a>
 			</div>
@@ -87,28 +87,27 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h2>Información del Centro</h2>
-					<table class="table">
+					<table class="rwd-table">
 						<thbody>
 							<tr>
-								<td> Nombre </td>
+								<td> <label> Nombre: </label> </td>
 								<td> ${centro.nombre} </td>
 							<tr>
-								<td> Director </td>
+								<td> <label>Director: </label> </td>
 								<td> ${superusuario.nombre}
 							</tr>
 							<tr>
-								<td> Provincia </td>
+								<td> <label> Provincia: </label> </td>
 								<td> ${centro.provincia} <td>
 							</tr>
 							<tr>
-								<td> Dirección </td>
+								<td> <label>Dirección:  </label> </td>
 								<td> ${centro.direccion} </td>
 							</tr>
-							
-						
 						</thbody>
 				</table>
 				
+				<br/>
 				<button type="button" class="btn btn-default" data-toggle="modal"
 			data-target="#myModal2"> Modificar Centro Educativo</button>
 				
