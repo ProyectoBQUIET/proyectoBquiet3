@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.empleodigital.bquiet.beans.Centro;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.databases.DataBaseBquiet;
@@ -45,7 +46,13 @@ public class ActualizarCentro {
 
 				DataBaseBquiet.actualizarCentro(id_centro, nombre, provincia, direccion);
 				
-				mav.addObject("centro", DataBaseBquiet.getCentroById(id_centro));
+				Centro centro =  DataBaseBquiet.getCentroById(id_centro);
+				
+				mav.addObject("centro", centro);
+				
+				mav.addObject("superusuario", DataBaseBquiet.getSuperUsuario(centro.getId()));
+				
+				mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(centro.getId()));
 
 			}
 

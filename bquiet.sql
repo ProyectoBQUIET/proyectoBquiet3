@@ -1,7 +1,7 @@
 /**** CREACION DE LA BASE DE DATOS ****/
 
 DROP DATABASE IF EXISTS bquiet;
-CREATE DATABASE IF NOT EXISTS bquiet;
+CREATE DATABASE IF NOT EXISTS bquiet CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE bquiet;
 
@@ -18,7 +18,7 @@ CREATE TABLE usuarios (
 	id_tipousuario INT(1) NOT NULL,
 	nombre VARCHAR(50) UNIQUE NOT NULL,
 	pass VARCHAR(20) NOT NULL,
-	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id) ON DELETE CASCADE
+	FOREIGN KEY (id_tipousuario) REFERENCES tipousuario (id) ON DELETE CASCADE ON UPDATE CASCADE
 
 ) ENGINE = INNODB;
 
@@ -35,8 +35,8 @@ CREATE TABLE usuarios_centros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_usuario INT(50) NOT NULL,
 	id_centro INT(5) NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE,
-	FOREIGN KEY (id_centro) REFERENCES centros (id) ON DELETE CASCADE
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (id_centro) REFERENCES centros (id) ON DELETE CASCADE ON UPDATE CASCADE
 
 ) ENGINE = INNODB;
 
@@ -45,7 +45,7 @@ CREATE TABLE registros (
 	media INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
 	fecha DATE UNIQUE NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE ON UPDATE CASCADE
 	
 ) ENGINE = INNODB;
 
@@ -54,7 +54,7 @@ CREATE TABLE lista_registros (
 	id_registro INT(5) NOT NULL,
 	valor INT(5) NOT NULL,
 	fecha TIME NOT NULL,
-	FOREIGN KEY (id_registro) REFERENCES registros (id) ON DELETE CASCADE
+	FOREIGN KEY (id_registro) REFERENCES registros (id) ON DELETE CASCADE ON UPDATE CASCADE
 	
 ) ENGINE = INNODB;
 
@@ -62,7 +62,7 @@ CREATE TABLE tokens (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	id_usuario INT(5) UNIQUE NOT NULL,
 	token VARCHAR(36) UNIQUE NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE
+	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE ON UPDATE CASCADE
 	
 ) ENGINE = INNODB;
 
@@ -87,7 +87,7 @@ INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnn', 
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnnnn', 'admin');
 INSERT INTO usuarios (id_tipousuario, nombre, pass) VALUES (3, 'cristiannnnnnnnn', 'admin');
 
-INSERT INTO centros(nombre,provincia,direccion) VALUES ("los llanos","malaga","calle llanos");
+INSERT INTO centros(nombre,provincia,direccion) VALUES ("los llanos","malaga españa","calle llanos");
 INSERT INTO centros(nombre,provincia,direccion) VALUES ("los flores","malaga","calle flores");
 INSERT INTO centros(nombre,provincia,direccion) VALUES ("los valle","malaga","calle valle");
 INSERT INTO centros(nombre,provincia,direccion) VALUES ("los jazmin","malaga","calle jazmin");
