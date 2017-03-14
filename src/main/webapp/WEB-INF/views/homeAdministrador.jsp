@@ -7,6 +7,8 @@
 
 <title>Home Administrador</title>
 <meta charset="UTF-8">
+<!-- paginacion -->
+
 
 <!-- Font Awesome -->
 <link
@@ -25,7 +27,8 @@
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
 
-
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <!--  librerias Bootstrap-->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -87,31 +90,69 @@
 	<div class="sectionn">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>Centros educativos registrados	</h2>
-					<form action="filtrarCentro" class="letraNegra">
-						<input type="text" name="nombreCentroBuscado" placeholder="Introduce nombre del centro"/>
-						<button type="submit">
-						  <span class="glyphicon glyphicon-search"></span> 
-						</button>
-					</form> 
-					<br>
-					<div class="scroll">
-					<ul>
-						<c:forEach items="${centros}" var="centro">
-							<li style="list-style: none;">
-							<p>${centro.nombre}  (${centro.provincia}) <a
-								href="<c:url value='/gestionar/${centro.nombre}'/>">Gestionar</a>
-								<a href='<c:url value="/eliminarcentro/${centro.nombre}"/>'>Eliminar</a>
-								</p>
-							</li>
+				
+				
+				<div class="col-md-7 col-centered">
+				<!-- paginacion -->
+					<table id="table_id" class="display">
+				    <thead>
+				        <tr>
+				            <th>Centros educativos registrados</th>
+				            <th>Provincia</th>
+				            <th data-orderable="false"></th>
+				        </tr>
+				    </thead>
+				    <tbody class="letraNegra">
+				      
+				      	<c:forEach items="${centros}" var="centro">
+							
+							<tr>
+				            	<td>
+				            		${centro.nombre}  
+				            	</td>
+				            	<td>
+				            		(${centro.provincia}) 
+				            	</td>
+				            	<td>
+					            	<a href="<c:url value='/gestionar/${centro.nombre}'/>">Gestionar</a>
+									<a href='<c:url value="/eliminarcentro/${centro.nombre}"/>'>Eliminar</a>
+				            	</td>
+				        	</tr>
+							
 						</c:forEach>
-					</ul>
+				      
+				    </tbody>
+				</table>
 					</div>
+				
 				</div>
 			</div>
 		</div>
-	</div>
+	
+	
+	
+	<script>
+	$(document).ready( function () {
+		$('#table_id').DataTable( {
+    		"language": {
+        "lengthMenu": "Mostrar _MENU_ centros por página",
+        "zeroRecords": "No se ha encontrado nada - lo sentimos!",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "No se ha encontrado nada - lo sentimos!",
+        "infoFiltered": "(filtrado por  _MAX_ registros totales)",
+        "search":         "Buscar:",
+        "paginate": {
+            "first":      "Primero",
+            "last":       "Último",
+            "next":       "Siguiente",
+            "previous":   "Anterior"
+        },
+        }
+    });
+	} );
+	</script>
+	
+	
 	
 
 	<div class="section">
