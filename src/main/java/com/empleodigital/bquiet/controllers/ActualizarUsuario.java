@@ -52,7 +52,11 @@ public class ActualizarUsuario {
 				
 				DataBaseBquiet.actualizarUsuario(user, username, pass);
 				
-				mav.addObject("usuario", DataBaseBquiet.getUsuario(username));
+				Usuario nuevo = DataBaseBquiet.getUsuario(username);
+				
+				mav.addObject("usuario", nuevo);
+				
+				mav.addObject("centro", DataBaseBquiet.getCentroByUsuario(nuevo));
 				
 			}
 		}

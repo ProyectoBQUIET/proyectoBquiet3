@@ -46,9 +46,9 @@ public class ControladorHome {
 					mav.addObject("centros", DataBaseBquiet.listaCentros());
 				} else if(usuario.getId_tipousuario()==TipoUsuario.SUPERUSUARIO){
 					mav.setViewName("homeSuperUsuario");
-					mav.addObject("superusuario",DataBaseBquiet.getUsuario(user, pass));
-					mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()));
-					mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(DataBaseBquiet.getUsuario(user, pass).getId()).getId()));
+					mav.addObject("superusuario", usuario);
+					mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(usuario.getId()));
+					mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(usuario.getId()).getId()));
 				} else if(usuario.getId_tipousuario()==TipoUsuario.USUARIO){
 					mav.addObject("centro", DataBaseBquiet.getCentroByUsuario(usuario));
 					mav.setViewName("homeUsuario");
@@ -64,6 +64,39 @@ public class ControladorHome {
 				
 		return mav;
 	}
+	
+	@RequestMapping(value="/home")
+	public ModelAndView home() {
+		
+		ModelAndView mav = new ModelAndView("login");
+		
+		Usuario loged = (Usuario) session.getAttribute("usuario");
+		
+		if(loged!=null) {
+			
+			if(loged.getId_tipousuario() == TipoUsuario.ADMINISTRADOR) {
+				mav.setViewName("homeAdministrador");
+				mav.addObject("centros", DataBaseBquiet.listaCentros());
+				
+			} else if(loged.getId_tipousuario() == TipoUsuario.SUPERUSUARIO) {
+				mav.setViewName("homeSuperUsuario");
+				mav.addObject("superusuario", loged);
+				mav.addObject("centro",DataBaseBquiet.getCentroByIdSuperUsuario(loged.getId()));
+				mav.addObject("usuarios",DataBaseBquiet.getUsuariosByCentroId(DataBaseBquiet.getCentroByIdSuperUsuario(loged.getId()).getId()));
+				
+				
+			} else if(loged.getId_tipousuario() == TipoUsuario.USUARIO) {
+				mav.addObject("centro", DataBaseBquiet.getCentroByUsuario(loged));
+				mav.setViewName("homeUsuario");
+				mav.addObject("superusuario", loged);
+			}
+			
+		}
+		
+		
+		return mav;
+	}
+	
 }
 	
 
