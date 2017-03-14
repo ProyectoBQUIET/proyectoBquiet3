@@ -52,7 +52,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <span><img
+				<a class="navbar-brand" href='<c:url value="/home"/>'> <span><img
 						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
 						width="auto" title="Robonautas" /> BQuiet </span></a>
 			</div>

@@ -53,9 +53,9 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <span><img
-						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>'
-						height="30" width="auto" title="Robonautas" /> INICIO</span></a>
+				<a class="navbar-brand" href='<c:url value="/home"/>'> <span><img
+						alt="ROBONAUTAS" src='<c:url value="/resources/img/P1d.png"/>' height="30"
+						width="auto" title="Robonautas" /> BQuiet </span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
