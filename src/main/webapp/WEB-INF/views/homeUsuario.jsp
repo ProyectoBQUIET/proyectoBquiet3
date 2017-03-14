@@ -10,31 +10,32 @@
 <!--grafica-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="<c:url value='/resources/js/codigo.js' />"></script>
+<!-- Font Awesome -->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
 <!--  pingendon -->
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
-
-<!-- Font Awesome -->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-
+<!-- paginacion -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 <!--  librerias Bootstrap-->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <!-- Local CSS-->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/cssusuario.css'/> " />
@@ -82,7 +83,8 @@
 						<p>Nombre usuario:  ${usuario.nombre}</p>
 						<p>Centro: ${centro.nombre }</p>
 						<br />
-						
+						<button type="button" class="btn btn-default" data-toggle="modal"
+			data-target="#myModalActualizar">Nuevo Centro Educativo</button>
 					</div>
 				</div>
 			</div>
@@ -116,14 +118,46 @@
    
    <!-- FORMULARIO ACTUALIZAR -->
 
-	<form method="post">
 	
-		<input type="text" hidden="hidden" value="${usuario.nombre}" name="usuario"/>
-		<input type="text" placeholder="Introduce tu nuevo usuario" name="username" required="required" />
-		<input type="password" placeholder="Introduce tu nueva contraseña" name="pass" required="required" />
-		<button class="btn btn-success" formaction='<c:url value='/actualizar'/>'>ACTUALIZAR</button>
+<!-- Modal modificar datos usuarios -->
+<div class="container">
 		
-	</form>
+		<div class="fade modal text-center" id="myModalActualizar">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modificar datos</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Registro formulario -->
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h2>Modificar datos</h2>
+								<form method="post">
+								
+									<input type="text" hidden="hidden" value="${usuario.nombre}" name="usuario"/><br>
+									Nuevo nombre<br><input type="text" placeholder="Introduce tu nuevo usuario" name="username" required="required" /><br>
+									Nueva contraseña<br> <input type="password" placeholder="Introduce tu nueva contraseña" name="pass" required="required" /><br>
+									<button class="btn btn-success" formaction='<c:url value='/actualizar'/>'>ACTUALIZAR</button>
+									
+								</form>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Cancelar</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 	<!--  footer -->
