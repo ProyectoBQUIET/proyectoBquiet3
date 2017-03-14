@@ -87,14 +87,12 @@
 		</div>
 	</div>
 	
-	<div class="sectionn">
+	<div class="section">
 		<div class="container">
 			<div class="row">
-				
-				
-				<div class="col-md-7 col-centered">
+				<div class="col-md-6 ">
 				<!-- paginacion -->
-					<table id="table_id" class="display">
+					<table id="table_id" class="display table table-bordered table-condensed table-hover table-striped"">
 				    <thead>
 				        <tr>
 				            <th>Centros educativos registrados</th>
@@ -122,6 +120,7 @@
 						</c:forEach>
 				      
 				    </tbody>
+				    
 				</table>
 					</div>
 				
