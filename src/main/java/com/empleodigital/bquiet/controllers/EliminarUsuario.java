@@ -45,6 +45,8 @@ public class EliminarUsuario {
 				
 				mav.addObject("centro", centro);
 				
+				mav.addObject("superusuario", DataBaseBquiet.getSuperUsuario(centro.getId()));
+				
 				mav.addObject("usuarios", DataBaseBquiet.getUsuariosByCentroId(centro.getId()));
 				
 			}
