@@ -137,6 +137,37 @@ INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 80, "09:25:00
 INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 83, "09:26:00");
 INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 81, "09:27:00");
 INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 79, "09:28:00");
-
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 75, "09:29:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 61, "09:30:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 85, "09:31:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 81, "09:32:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 80, "09:33:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 77, "09:34:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 73, "09:35:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 81, "09:36:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 71, "09:37:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 68, "09:38:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 50, "09:39:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 20, "09:40:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 30, "09:41:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 45, "09:42:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 66, "09:43:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 33, "09:44:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 28, "09:45:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 55, "09:46:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 81, "09:47:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 67, "09:48:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 34, "09:49:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 76, "09:50:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 55, "09:51:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 53, "09:52:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 75, "09:53:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 66, "09:54:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 80, "09:55:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 83, "09:56:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 81, "09:57:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 79, "09:58:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 75, "09:59:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 61, "10:00:00");
 
 
