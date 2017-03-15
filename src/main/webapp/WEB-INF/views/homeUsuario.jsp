@@ -117,10 +117,10 @@
          <br>
          <br>
          <br>
-         <br>
-         <br>
          <div class="col-md-6 graph">
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        	<c:if test="${not empty json}">
+        		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        	</c:if>
          </div>
          <div class="col-md-6 graph" >
 	         <!-- JSON OCULTO -->
@@ -155,8 +155,8 @@
 								<form method="post">
 								
 									<input type="text" hidden="hidden" value="${usuario.nombre}" name="usuario"/>
-									Nuevo nombre<br><input type="text" placeholder="Introduce tu nuevo usuario" name="username" required="required" /><br><br>
-									Nueva contraseña<br> <input type="password" placeholder="Introduce tu nueva contraseña" name="pass" required="required" /><br><br>
+									Nuevo nombre<br><input class="form-control text-center" type="text" placeholder="Introduce tu nuevo usuario" name="username" required="required" /><br><br>
+									Nueva contraseña<br> <input class="form-control text-center" type="password" placeholder="Introduce tu nueva contraseña" name="pass" required="required" /><br><br>
 									<button class="btn btn-success" formaction='<c:url value='/actualizar'/>'>ACTUALIZAR</button>
 									
 								</form>
