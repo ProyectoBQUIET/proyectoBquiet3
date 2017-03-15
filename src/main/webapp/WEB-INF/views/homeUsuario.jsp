@@ -104,7 +104,7 @@
 	<div class="section">
      <div class="container">
        <div class="row">
-         <div class="col-md-6 graph">
+         <!-- <div class="col-md-6 graph"> -->
          <br>
 
          <form action='<c:url value="/ver/${usuario.nombre}"/>'>
@@ -114,6 +114,13 @@
 				<input type="submit"value="Enviar..">
 			</div>
 		</form>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <div class="col-md-6 graph">
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
          </div>
          <div class="col-md-6 graph" >
 	         <!-- JSON OCULTO -->
@@ -180,7 +187,7 @@
 	</div>
 
 
-	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	
 
 	<!--  footer -->
 

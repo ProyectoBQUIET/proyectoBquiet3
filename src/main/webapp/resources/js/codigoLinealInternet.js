@@ -28,7 +28,6 @@ function cargar(){
 		arrayy[i] = parseInt(arrayy[i]);
 	}
 	
-	alert(datos);
 	
 	Highcharts.chart('container', {
 		chart: {
@@ -110,7 +109,7 @@ function cargar(){
 	        }
 	    },
 	    series: [{
-	        name: 'db',
+	        name: 'valor',
 	        color: 'rgb(135, 135, 97)',
 	        data: arrayy
 
