@@ -7,10 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Home Usuario</title>
+
+<!-- graficainternet -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 <!--grafica-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="<c:url value='/resources/js/codigo.js' />"></script>
 <!-- Font Awesome -->
+<script type="text/javascript" src="<c:url value='/resources/js/codigoLinealInternet.js' />"></script>
+
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -158,6 +165,22 @@
 	</div>
 
 
+
+
+
+	<div hidden="hidden">
+		<p id="datos">${datos}</p>
+		<p id="lmin">${lmin}</p>
+		<p id="lmax">${lmax}</p>
+		<p id="year">${year}</p>
+		<p id="mes">${mes}</p>
+		<p id="dia">${dia}</p>
+		<p id="hora">${hora}</p>
+		<p id="minuto">${minuto}</p>
+	</div>
+
+
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 	<!--  footer -->
 
