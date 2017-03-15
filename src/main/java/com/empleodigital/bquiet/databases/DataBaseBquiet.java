@@ -21,6 +21,7 @@ import com.empleodigital.bquiet.beans.RegistroPrincipalBean;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.beans.UsuariosCentros;
+import com.empleodigital.bquiet.util.Estadisticas;
 import com.empleodigital.bquiet.util.UnixTime;
 
 public class DataBaseBquiet extends DataBaseGenerica {
@@ -494,7 +495,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			String hora = arrHora[0];
 			String minuto = arrHora[1];
 			
-			//String jsonMedia = Estadisticas.getEstadisticasMedia(datos, lmax, lmin);
+			String jsonMedia = Estadisticas.getEstadisticasMedia(datos, lmax, lmin);
 			
 			mav.addObject("datos", valores);
 			mav.addObject("lmin", lmin);
@@ -504,6 +505,8 @@ public class DataBaseBquiet extends DataBaseGenerica {
 			mav.addObject("dia", dia);
 			mav.addObject("hora", hora);
 			mav.addObject("minuto", minuto);
+			
+			mav.addObject("json", jsonMedia);
 
 			
 		} catch (Exception e) {
