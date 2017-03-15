@@ -6,19 +6,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.empleodigital.bquiet.beans.Centro;
+import com.empleodigital.bquiet.beans.ListaRegistroBean;
 import com.empleodigital.bquiet.beans.RegistroBean;
 import com.empleodigital.bquiet.beans.RegistroPrincipalBean;
 import com.empleodigital.bquiet.beans.TipoUsuario;
 import com.empleodigital.bquiet.beans.Usuario;
 import com.empleodigital.bquiet.beans.UsuariosCentros;
-import com.empleodigital.bquiet.util.Estadisticas;
 import com.empleodigital.bquiet.util.UnixTime;
 
 public class DataBaseBquiet extends DataBaseGenerica {
@@ -267,32 +269,6 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 	}
 
-	public static int agregarRegistro(final int media, final int id_usuario, final long fecha) {
-
-		KeyHolder holder = new GeneratedKeyHolder();
-
-		jdbc.update(new PreparedStatementCreator() {           
-
-			@Override
-			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement("INSERT INTO registros (media, id_usuario, fecha) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-				ps.setInt(1, media);
-				ps.setInt(2, id_usuario);
-				ps.setString(3, UnixTime.getFecha(fecha));
-				return ps;
-			}
-		}, holder);
-
-		return holder.getKey().intValue();
-
-	}
-
-	public static void agregarListaRegistro(int id_registro, String fecha, int valor) {
-
-		String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
-		jdbc.update(sql, new Object[]{id_registro, UnixTime.getHora(Long.parseLong(fecha)), valor});
-
-	}
 
 	public static Usuario getUsuarioByToken(String token) {
 
@@ -337,58 +313,6 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 	}
 
-	public static String obtenerEstadisticas(int id_usuario, String fecha) {
-
-		String json = null;
-
-		try {
-
-			String sql = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
-			RegistroPrincipalBean reg = jdbc.queryForObject(sql,
-					new BeanPropertyRowMapper<RegistroPrincipalBean>(RegistroPrincipalBean.class),
-					new Object[]{id_usuario, fecha});
-
-			int id_registro = reg.getId();
-			String sql2 = "SELECT * FROM lista_registros WHERE id_registro=?";
-			ArrayList<RegistroBean> registros = (ArrayList<RegistroBean>) jdbc.query(sql2,
-					new BeanPropertyRowMapper<RegistroBean>(RegistroBean.class),
-					new Object[]{id_registro});
-
-			ArrayList<String> datos = new ArrayList<String>();
-			for(RegistroBean x : registros) {
-				//Formato unixtime:valor
-				String date = fecha + " " + x.getFecha();
-				datos.add(UnixTime.getUnixTime(date) + ":" + x.getValor());
-			}
-
-			json = Estadisticas.getStats(datos);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return json;
-	}
-
-	public static int existeRegistro(int id_usuario, String fecha) {
-
-		int num = 0;
-
-		try {
-
-			String sql = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
-			RegistroPrincipalBean reg = jdbc.queryForObject(sql,
-					new BeanPropertyRowMapper<RegistroPrincipalBean>(RegistroPrincipalBean.class),
-					new Object[]{id_usuario, fecha});
-
-			num = reg.getId();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return num;
-	}
-
 	public static Centro getCentroByUsuario(Usuario user) {
 		Centro centro = null;
 
@@ -421,7 +345,7 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 	}
 
-	
+
 	public static ArrayList<Centro> getCentroFiltrado(String nombre) {
 		ArrayList<Centro> centros = new ArrayList<Centro>();
 		String nombreCentro= '%'+nombre+'%';
@@ -436,33 +360,155 @@ public class DataBaseBquiet extends DataBaseGenerica {
 
 		return centros;
 	}
-	
+
 	public static void actualizarUsuario(Usuario user, String username, String pass) {
-		
+
 		try {
-			
+
 			String sql = "UPDATE usuarios SET nombre=?, pass=? WHERE id=?";
 			jdbc.update(sql, new Object[]{username, pass, user.getId()});
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void actualizarCentro(int id_centro, String nombre, String provincia, String direccion) {
+
+		try {
+
+			Centro centro = getCentroById(id_centro);
+
+			String sql = "UPDATE centros SET nombre=?, provincia=?, direccion=? WHERE id=?";
+			jdbc.update(sql, new Object[]{nombre, provincia, direccion, centro.getId()});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	//Metodos Estatisticas / Registros
+	
+	public static int existeRegistro(int id_usuario, String fecha) {
+		int num = 0;
 		
 		try {
 			
-			Centro centro = getCentroById(id_centro);
-			
-			String sql = "UPDATE centros SET nombre=?, provincia=?, direccion=? WHERE id=?";
-			jdbc.update(sql, new Object[]{nombre, provincia, direccion, centro.getId()});
+			String sql = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
+			RegistroBean reg = jdbc.queryForObject(sql,
+					new BeanPropertyRowMapper<RegistroBean>(RegistroBean.class),
+					id_usuario, fecha);
+			num = reg.getId();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		return num;
+	}
+
+	public static void agregarRegistro(final Usuario user, final int lmax, final int lmin, String json) {
+		
+		int id_registro;
+
+		try {
+
+			ListaRegistroBean lista = new ObjectMapper().readValue(json, ListaRegistroBean.class);
+
+			Long date1 = Long.parseLong(lista.getRegistros()[0].getFecha());
+			final String fecha = UnixTime.getFecha(date1);
+			
+			id_registro = existeRegistro(user.getId(), fecha);
+			
+			if(id_registro == 0) {
+				
+				KeyHolder holder = new GeneratedKeyHolder();
+
+				jdbc.update(new PreparedStatementCreator() {           
+
+					@Override
+					public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+						PreparedStatement ps = connection.prepareStatement("INSERT INTO registros (lmax, lmin, id_usuario, fecha) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+						ps.setInt(1, lmax);
+						ps.setInt(2, lmin);
+						ps.setInt(3, user.getId());
+						ps.setString(4, fecha);
+						return ps;
+					}
+				}, holder);
+
+				id_registro =  holder.getKey().intValue();
+				
+			}
+			
+			for(RegistroBean reg : lista.getRegistros()) {
+				String sql = "INSERT INTO lista_registros (id_registro, fecha, valor) VALUES (?, ?, ?)";
+				Long date2 = Long.parseLong(reg.getFecha());
+				jdbc.update(sql, new Object[]{id_registro, UnixTime.getHora(date2), reg.getValor()});
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	//
+	public static void obtenerEstadisticas(int id_usuario, String fecha, ModelAndView mav) {
+		
+		try {
+			
+			String sql1 = "SELECT * FROM registros WHERE id_usuario=? AND fecha=?";
+			RegistroPrincipalBean registro = jdbc.queryForObject(sql1, 
+					new BeanPropertyRowMapper<RegistroPrincipalBean>(RegistroPrincipalBean.class),
+					new Object[]{id_usuario, fecha});
+			
+			int id_registro = registro.getId();
+			int lmax = registro.getLmax();
+			int lmin = registro.getLmin();
+			
+			String sql2 = "SELECT * FROM lista_registros WHERE id_registro=?";
+			ArrayList<RegistroBean> listaRegistros = (ArrayList<RegistroBean>) jdbc.query(sql2,
+					new BeanPropertyRowMapper<RegistroBean>(RegistroBean.class),
+					new Object[]{id_registro});
+			
+			String valores = "";
+			ArrayList<String> datos = new ArrayList<String>();
+			for(RegistroBean rg : listaRegistros) {
+				valores+=rg.getValor() + ",";
+				String dateTime = fecha + " " + rg.getFecha();
+				String dato = UnixTime.getUnixTime(dateTime) + ":" + rg.getValor();
+				datos.add(dato);
+			}
+			
+			String[] arrFecha = fecha.split("/");
+			String year = arrFecha[0];
+			String mes = arrFecha[1];
+			String dia = arrFecha[2];
+			
+			String time = listaRegistros.get(0).getFecha();
+			String[] arrHora = time.split(":");
+			String hora = arrHora[0];
+			String minuto = arrHora[1];
+			
+			//String jsonMedia = Estadisticas.getEstadisticasMedia(datos, lmax, lmin);
+			
+			mav.addObject("datos", valores);
+			mav.addObject("lmin", lmin);
+			mav.addObject("lmax", lmax);
+			mav.addObject("year", year);
+			mav.addObject("mes", mes);
+			mav.addObject("dia", dia);
+			mav.addObject("hora", hora);
+			mav.addObject("minuto", minuto);
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

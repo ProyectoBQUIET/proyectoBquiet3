@@ -15,6 +15,14 @@ public class UnixTime {
 		return formattedDate;
 	}
 	
+	public static String getFechaCompleta(long unixtime) {
+		Date date = new Date(unixtime*1000L);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		String formattedDate = sdf.format(date);
+		return formattedDate;
+	}
+	
 	public static String getHora(long unixtime) {
 		Date date = new Date(unixtime*1000L);
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");

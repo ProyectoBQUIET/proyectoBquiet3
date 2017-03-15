@@ -42,7 +42,8 @@ CREATE TABLE usuarios_centros (
 
 CREATE TABLE registros (
 	id INT(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	media INT(5) NOT NULL,
+	lmax INT(5) NOT NULL,
+	lmin INT(5) NOT NULL,
 	id_usuario INT(5) NOT NULL,
 	fecha DATE UNIQUE NOT NULL,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -106,28 +107,11 @@ INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (10,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (11,2);
 INSERT INTO usuarios_centros(id_usuario,id_centro) VALUES (12,2);
 
+INSERT INTO registros (id, lmax, lmin, id_usuario, fecha) VALUES (1, 80, 40, 6, "2017/03/15");
 
-INSERT INTO registros(id, media, id_usuario, fecha) VALUES (1, 70, 6, '2017/03/13');
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:05:00', 80);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:10:00', 80);
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:15:00', 60);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:20:00', 60);
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:21:00', 80);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:23:00', 80);
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:24:00', 60);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:25:00', 60);
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:28:00', 80);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:29:15', 80);
-
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:29:45', 60);
-INSERT INTO lista_registros(id_registro, fecha, valor) VALUES (1, '09:32:10', 60);
-
-
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 80, "09:10:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 60, "09:15:00");
+INSERT INTO lista_registros (id_registro, valor, fecha) VALUES (1, 40, "09:20:00");
 
 
 
