@@ -20,12 +20,12 @@ function cargar(){
 	var minuto = document.getElementById("minuto").innerHTML;
 	
 	
-	var arrayy = new Array();
+	var array = new Array();
 	
-	arrayy = datos.split(",");
+	array = datos.split(",");
 	
-	for(var i=0; i<arrayy.length; i++){
-		arrayy[i] = parseInt(arrayy[i]);
+	for(var i=0; i<array.length; i++){
+		array[i] = parseInt(array[i]);
 	}
 	
 	alert(datos);
@@ -106,13 +106,13 @@ function cargar(){
 	                enabled: false
 	            },
 	            pointInterval: 60000, // one minute
-	            pointStart: Date.UTC(year, mes, dia, hora,minuto,0)
+	            pointStart: Date.UTC(year, mes, dia, 0,0,0)
 	        }
 	    },
 	    series: [{
 	        name: 'db',
 	        color: 'rgb(135, 135, 97)',
-	        data: arrayy
+	        data: array
 
 	    }],
 	    navigation: {
@@ -121,46 +121,4 @@ function cargar(){
 	        }
 	    }
 	});
-	
-	var textarea = document.getElementById("json").value;
-	//alert(textarea);
-
-	var json = ""+textarea;
-	//var json ='{"registros" : [{ "rango":"alto" , "value":70 },{ "rango":"medio" , "value":20 },{ "rango":"bajo" , "value":20 } ]}';
-	
-	//alert(json);
-	var obj = JSON.parse(json);
-	
-	var array = new Array();
-	array[0] = new Array("hora","db");
-	
-
-	
-	for (var i=0; i<obj.registros.length; i++){
-		array[i+1] = new Array(obj.registros[i].rango,obj.registros[i].value);
-	}
-	
-	google.charts.load('current', {'packages':['corechart']});
-	google.charts.setOnLoadCallback(drawChart);
-
-	function drawChart() {
-
-		var data = google.visualization.arrayToDataTable(array);
-
-		var options = {
-				title: 'Registro acústico diario',
-				slices: {
-		            0: { color: 'red' },
-		            1: { color: 'yellow' },
-		            2: { color: 'green' }
-		          }, 
-				backgroundColor: 'transparent'
-		};
-
-		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-		chart.draw(data, options);
-	}
-	
-	
 }

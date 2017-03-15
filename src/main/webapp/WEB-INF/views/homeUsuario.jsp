@@ -105,6 +105,8 @@
      <div class="container">
        <div class="row">
          <div class="col-md-6 graph">
+         <br>
+
          <form action='<c:url value="/ver/${usuario.nombre}"/>'>
 			<h4 >Registros diarios de la medición acústica</h4>
 			<div class="fecha">
@@ -163,8 +165,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 
 
