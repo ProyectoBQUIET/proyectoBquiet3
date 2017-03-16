@@ -95,7 +95,7 @@ function cargar(){
 	    },
 	    plotOptions: {
 	        spline: {
-	            lineWidth: 4,
+	            lineWidth: 3,
 	            states: {
 	                hover: {
 	                    lineWidth: 2
@@ -109,7 +109,7 @@ function cargar(){
 	        }
 	    },
 	    series: [{
-	        name: 'valor',
+	        name: 'Nivel sonido',
 	        color: 'rgb(135, 135, 97)',
 	        data: arrayy
 
@@ -147,13 +147,17 @@ function cargar(){
 		var data = google.visualization.arrayToDataTable(array);
 
 		var options = {
-				title: 'Registro acústico diario',
+				title: 'Porcentaje medio de la acústica',
 				slices: {
-		            0: { color: 'red' },
-		            1: { color: 'yellow' },
-		            2: { color: 'green' }
+		            0: { color: '#e22d2d' },
+		            1: { color: '#fce42f' },
+		            2: { color: '#49ff55' }
 		          }, 
-				backgroundColor: 'transparent'
+				backgroundColor: 'transparent',
+				legend:{textStyle: {color: 'white', fontSize: 20}},
+				pieSliceTextStyle: {color: 'black', fontSize: 25},
+				titleTextStyle: {color:'white'}	
+
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));

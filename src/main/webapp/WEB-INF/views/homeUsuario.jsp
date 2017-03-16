@@ -81,7 +81,6 @@
 	<br>
 
 	<!--  información 	usuario-->
-	<div class="section">
 		<div class="container">
 			<div class="row">
 				<h2>Información Usuario</h2>
@@ -95,7 +94,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 
 	<!-- FORMULARIO ESTADISTICAS -->
@@ -108,13 +106,12 @@
          <br>
 
          <form action='<c:url value="/ver/${usuario.nombre}"/>'>
-			<h4 >Registros diarios de la medición acústica</h4>
+			<h4 >Selecciona un día</h4>
 			<div class="fecha">
 				<input type="date" name="fecha" /> 
 				<input type="submit"value="Enviar..">
 			</div>
 		</form>
-         <br>
          <br>
          <br>
          <div class="col-md-6 graph">
