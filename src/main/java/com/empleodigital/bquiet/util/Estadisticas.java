@@ -3,23 +3,9 @@ package com.empleodigital.bquiet.util;
 import java.util.ArrayList;
 
 public class Estadisticas {
-	
+
 	//formato unixtime:valor
-	public static String getStats(ArrayList<String> datos) {
-
-		int max = 0;
-		int min = 0;
-
-		for(String x : datos) {
-			String[] ar = x.split(":");
-			int num = Integer.parseInt(ar[1]);
-			if(num>max) max = num;
-			if(num<max) min=num;
-		}
-
-		boolean mayor = false;
-		boolean medio = false;
-		boolean menor = false;
+	public static String getEstadisticasMedia(ArrayList<String> datos, int lmax, int lmin) {
 
 		//Segundos en cada tipo
 		int smayor = 0;
@@ -27,64 +13,34 @@ public class Estadisticas {
 		int smenor = 0;
 
 		//Ultima fecha en unix
-		int ufecha = 0;
+		int ufecha = (Integer.parseInt(datos.get(0).split(":")[0]) /3600) *3600;
+
 
 		for(String x : datos) {
+			System.out.println("Dato: " + x);
 			String[] ar = x.split(":");
-			int num = Integer.parseInt(ar[1]);
+
 			int fecha = Integer.parseInt(ar[0]);
+			int num = Integer.parseInt(ar[1]);
 
+			int s1 = UnixTime.unixToSeconds(ufecha);
+			int s2 = UnixTime.unixToSeconds(fecha);
+			int resto = s2-s1;
 
-			if(num==max) {
+			System.out.println("Resto: " + resto);
 
-				if(mayor && fecha>0) {
-
-					int seconds1 = UnixTime.unixToSeconds(ufecha);
-					int seconds2 = UnixTime.unixToSeconds(fecha);
-					smayor += seconds2-seconds1;
-					mayor = false;
-					if(!medio) medio=true;
-
-				} else {
-					mayor = true;
-				}
-
-			}
-			
-			if(num==min) {
-
-				if(menor && fecha>0) {
-
-					int seconds1 = UnixTime.unixToSeconds(ufecha);
-					int seconds2 = UnixTime.unixToSeconds(fecha);
-					smenor += seconds2-seconds1;
-					menor = false;
-					if(!medio) medio=true;
-
-				} else {
-					menor = true;
-				}
-
-			}
-			
-			if(medio) {
-				int seconds1 = UnixTime.unixToSeconds(ufecha);
-				int seconds2 = UnixTime.unixToSeconds(fecha);
-				smedio += seconds2-seconds1;
-			}
+			if(num>=lmax) smayor+=resto;
+			if(num<lmax && num>lmin) smedio+=resto;
+			if(num<=lmin) smenor+=resto;
 
 			ufecha = Integer.parseInt(ar[0]);
 		}
 
-		smedio = smedio - (smayor + smenor);
-		
-		String json = "{\"registros\" : [{ \"rango\":\"alto\" , \"value\":x}, { \"rango\":\"medio\" , \"value\":y}, { \"rango\":\"bajo\" , \"value\":z}]}";
-		json = json.replace("x", ""+smayor);
-		json = json.replace("y", ""+smedio);
-		json = json.replace("z", ""+smenor);
-		System.out.println("Segundos mayor: " + smayor);
-		System.out.println("Segundos medio: " + smedio);
-		System.out.println("Segundos menor: " + smenor);
+		String json = "{'registros' : [{'rango':'alto','value':<alto>}, {'rango':'medio','value':<medio>}, {'rango':'bajo','value':<bajo>}]}";
+		json = json.replace("<alto>", ""+smayor);
+		json = json.replace("<medio>", ""+smedio);
+		json = json.replace("<bajo>", ""+smenor);
+		json = json.replace("'", "\"");
 		return json;
 	}
 

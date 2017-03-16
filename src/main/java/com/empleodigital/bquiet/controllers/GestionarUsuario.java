@@ -51,8 +51,10 @@ public class GestionarUsuario {
 				if(fecha!=null) {
 
 					fecha = fecha.replace("-", "/");
-
-					mav.addObject("json", DataBaseBquiet.obtenerEstadisticas(user.getId(), fecha));
+					
+					//Este metodo recibe por parametros el mav y le agrega los objetos
+					DataBaseBquiet.obtenerEstadisticas(user.getId(), fecha, mav);
+					
 
 				}
 

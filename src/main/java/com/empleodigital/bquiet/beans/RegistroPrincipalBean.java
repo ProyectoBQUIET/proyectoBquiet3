@@ -4,7 +4,8 @@ public class RegistroPrincipalBean {
 	
 	private int id;
 	private int id_usuario;
-	private int media;
+	private int lmax;
+	private int lmin;
 	private String fecha;
 	
 	public RegistroPrincipalBean() {}
@@ -25,12 +26,20 @@ public class RegistroPrincipalBean {
 		this.id_usuario = id_usuario;
 	}
 
-	public int getMedia() {
-		return media;
+	public int getLmax() {
+		return lmax;
 	}
 
-	public void setMedia(int media) {
-		this.media = media;
+	public void setLmax(int lmax) {
+		this.lmax = lmax;
+	}
+
+	public int getLmin() {
+		return lmin;
+	}
+
+	public void setLmin(int lmin) {
+		this.lmin = lmin;
 	}
 
 	public String getFecha() {
@@ -43,8 +52,8 @@ public class RegistroPrincipalBean {
 
 	@Override
 	public String toString() {
-		return "RegistroPrincipalBean [id=" + id + ", id_usuario=" + id_usuario + ", media=" + media + ", fecha="
-				+ fecha + "]";
+		return "RegistroPrincipalBean [id=" + id + ", id_usuario=" + id_usuario + ", lmax=" + lmax + ", lmin=" + lmin
+				+ ", fecha=" + fecha + "]";
 	}
-	
+
 }
